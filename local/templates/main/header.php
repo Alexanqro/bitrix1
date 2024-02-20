@@ -6,7 +6,7 @@ if (!defined ('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 ?>
 
 <!doctype html>
-<html lang="ru">
+<? LANGUAGE_ID; ?>
 
 <head>
 
