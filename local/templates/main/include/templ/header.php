@@ -1,18 +1,13 @@
 <?php
-?>
+if (!defined ('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
+{
+    die();
+}
 
-<!doctype html>
-<html lang="ru">
 
-<head>
-    <meta charset="utf-8">
-    <title>test-html</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
-</head>
+;?>
 
-<body class="body">
 
-<div class="wrapper">
     <header class="header" id="header">
         <div class="header-wrapper">
             <div class="header-row">
@@ -98,4 +93,4 @@
             </div>
         </div>
     </header>
-    <main class="main">
+
