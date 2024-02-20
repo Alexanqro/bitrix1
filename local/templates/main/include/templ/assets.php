@@ -15,4 +15,5 @@ $asset->addCss(SITE_TEMPLATE_PATH . '/app.css');
 
 $asset->addJs(SITE_TEMPLATE_PATH . '/assets/app.js');
 $asset->addJs(SITE_TEMPLATE_PATH . '/assets/vendor.js');
-$asset->addJs('https://code.jquery.com/jquery-3.5.1.slim.min.js');
+$asset->addString('<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">');
+$asset->addString('<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=<ваш API-ключ>"></script>');

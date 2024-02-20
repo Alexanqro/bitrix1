@@ -5,7 +5,7 @@ if (!defined ('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 }
 ?>
 
-</main>
+
 <footer class="footer">
     <div class="footer-wrapper desktop" data-aos="fade-up" data-aos-duration="1500">
         <div class="footer__ornament"><svg xmlns="http://www.w3.org/2000/svg" width="1840" height="115" viewbox="0 0 1840 115" fill="none">

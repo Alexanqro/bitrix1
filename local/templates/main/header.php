@@ -9,10 +9,9 @@ if (!defined ('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 <html lang="ru">
 
 <head>
-    <meta charset="utf-8">
-    <title><?$APPLICATION->ShowTitle?></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+
     <?$APPLICATION->ShowHead();?>
+    <title><?$APPLICATION->ShowTitle();?></title>
     <?require($_SERVER['DOCUMENT_ROOT'] . SITE_TEMPLATE_PATH . '/include/templ/assets.php');?>
 
 </head>
