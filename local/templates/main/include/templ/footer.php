@@ -100,29 +100,42 @@ if (!defined ('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                 </div>
                 <div class="footer-content__col right">
                     <div class="footer-content__subcol">
-                        <div class="footer-content__subcol-top">
-                            <nav class="footer-content__nav">
-                                <ul class="footer-content__nav-list">
-                                    <li class="footer-nav__list-item"><a class="footer-content__nav-item" href="#">О компании</a></li>
-                                    <li class="footer-nav__list-item"><a class="footer-content__nav-item" href="#">Работа у нас</a></li>
-                                    <li class="footer-nav__list-item"><a class="footer-content__nav-item" href="#">Новости и акции</a></li>
-                                    <li class="footer-nav__list-item"><a class="footer-content__nav-item" href="#">Торговые марки</a></li>
-                                    <li class="footer-nav__list-item"><a class="footer-content__nav-item" href="#">Партнерам</a></li>
-                                </ul>
-                            </nav>
-                        </div>
+                        <?$APPLICATION->IncludeComponent(
+                            "bitrix:menu",
+                            "menu_menu2",
+                            Array(
+                                "ALLOW_MULTI_SELECT" => "N",
+                                "CHILD_MENU_TYPE" => "left",
+                                "DELAY" => "N",
+                                "MAX_LEVEL" => "1",
+                                "MENU_CACHE_GET_VARS" => array(""),
+                                "MENU_CACHE_TIME" => "3600",
+                                "MENU_CACHE_TYPE" => "N",
+                                "MENU_CACHE_USE_GROUPS" => "Y",
+                                "ROOT_MENU_TYPE" => "left",
+                                "USE_EXT" => "N"
+                            )
+                        );?>
                         <div class="footer-content__subcol-bot"><a class="footer-content__policy" href="#">Политика конфиденциальности</a></div>
                     </div>
                     <div class="footer-content__subcol">
                         <div class="footer-content__subcol-top">
-                            <nav class="footer-content__nav">
-                                <ul class="footer-content__nav-list">
-                                    <li class="footer-nav__list-item"><a class="footer-content__nav-item" href="#">Рецепты</a></li>
-                                    <li class="footer-nav__list-item"><a class="footer-content__nav-item" href="#">Где купить</a></li>
-                                    <li class="footer-nav__list-item"><a class="footer-content__nav-item" href="#">Контакты</a></li>
-                                    <li class="footer-nav__list-item"><a class="footer-content__nav-item" href="#">Видео</a></li>
-                                </ul>
-                            </nav>
+                            <?$APPLICATION->IncludeComponent(
+                                "bitrix:menu",
+                                "menu_menu2",
+                                Array(
+                                    "ALLOW_MULTI_SELECT" => "N",
+                                    "CHILD_MENU_TYPE" => "right",
+                                    "DELAY" => "N",
+                                    "MAX_LEVEL" => "1",
+                                    "MENU_CACHE_GET_VARS" => array(""),
+                                    "MENU_CACHE_TIME" => "3600",
+                                    "MENU_CACHE_TYPE" => "N",
+                                    "MENU_CACHE_USE_GROUPS" => "Y",
+                                    "ROOT_MENU_TYPE" => "left",
+                                    "USE_EXT" => "N"
+                                )
+                            );?>
                         </div>
                     </div>
                     <div class="footer-content__subcol">

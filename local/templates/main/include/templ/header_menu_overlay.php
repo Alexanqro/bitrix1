@@ -99,15 +99,13 @@
                         <a class="header-main__contacts-tel" href="tel:+78614725800">
                             <?$APPLICATION->IncludeComponent(
                                 "bitrix:main.include",
-                                ".default",
-                                array(
-                                    "AREA_FILE_RECURSIVE" => "Y",
-                                    "AREA_FILE_SHOW" => "page",
-                                    "AREA_FILE_SUFFIX" => "phone",
+                                "",
+                                Array(
+                                    "AREA_FILE_SHOW" => "file",
+                                    "AREA_FILE_SUFFIX" => "inc",
                                     "EDIT_TEMPLATE" => "",
-                                    "COMPONENT_TEMPLATE" => ".default"
-                                ),
-                                false
+                                    "PATH" => SITE_TEMPLATE_PATH . '/include/includes/phone.php'
+                                )
                             );?>
                         </a><a class="header-main__contacts-mail" href="mailto:zdor_prod@mail.ru">zdor_prod@mail.ru</a>
                     </div>
