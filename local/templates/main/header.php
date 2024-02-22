@@ -20,6 +20,7 @@ if (!defined ('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 <div><?php $APPLICATION->ShowPanel();?></div>
     <div class="wrapper">
         <?php require($_SERVER['DOCUMENT_ROOT'] . SITE_TEMPLATE_PATH . "/include/templ/header.php"); ?>
+        <?php require($_SERVER['DOCUMENT_ROOT'] . SITE_TEMPLATE_PATH . "/include/templ/header_menu_overlay.php"); ?>
         <main class="main">
 
 
