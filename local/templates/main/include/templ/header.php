@@ -70,7 +70,26 @@ if (!defined ('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                         </svg></a></div>
                 <div class="header-col right">
                     <div class="header-col__subrow">
-                        <nav class="header-nav"><a class="header-nav__item" href="#">Партнерам</a><a class="header-nav__item" href="#"> Где купить</a><a class="header-nav__item" href="#"> Контакты</a></nav>
+                        <nav class="header-nav">
+                            <?php
+                            $APPLICATION->IncludeComponent(
+                                "bitrix:menu",
+                                "menu_menu_4",
+                                array(
+                                    "ALLOW_MULTI_SELECT" => "N",
+                                    "ROOT_MENU_TYPE" => "right_right",
+                                    "CHILD_MENU_TYPE" => "left",
+                                    "DELAY" => "N",
+                                    "MAX_LEVEL" => "1",
+                                    "MENU_CACHE_GET_VARS" => array(""),
+                                    "MENU_CACHE_TIME" => "3600",
+                                    "MENU_CACHE_TYPE" => "N",
+                                    "MENU_CACHE_USE_GROUPS" => "Y",
+                                    "USE_EXT" => "Y"
+                                )
+                            );
+                            ?>
+                        </nav>
                         <div class="header-contacts"><a class="header-contacts__item btn-hover_parent" href="tel:+78614725800">
                                 <div class="btn-hover_circle white header_link"></div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none">
                                     <path d="M12.9901 2.75C13.8509 2.75 14.2319 2.75076 14.5461 2.77889C18.0394 3.09165 20.808 5.86017 21.1207 9.35348C21.1489 9.66768 21.1496 10.0487 21.1496 10.9095V11.8995C21.1496 12.3137 21.4854 12.6495 21.8996 12.6495C22.3138 12.6495 22.6496 12.3137 22.6496 11.8995V10.8591C22.6496 10.0622 22.6496 9.60934 22.6147 9.21971C22.2373 5.00365 18.896 1.66234 14.6799 1.28486C14.2902 1.24998 13.8374 1.24999 13.0404 1.25H12.0001C11.5859 1.25 11.2501 1.58579 11.2501 2C11.2501 2.41422 11.5859 2.75 12.0001 2.75L12.9901 2.75Z" fill="#0068FF"></path>

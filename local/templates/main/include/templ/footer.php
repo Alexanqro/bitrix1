@@ -132,7 +132,7 @@ if (!defined ('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                                     "MENU_CACHE_TIME" => "3600",
                                     "MENU_CACHE_TYPE" => "N",
                                     "MENU_CACHE_USE_GROUPS" => "Y",
-                                    "ROOT_MENU_TYPE" => "left",
+                                    "ROOT_MENU_TYPE" => "right",
                                     "USE_EXT" => "N"
                                 )
                             );?>
@@ -244,37 +244,31 @@ if (!defined ('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                 </div>
                 <div class="footer-content__col right">
                     <div class="footer-content__contacts">
-                        <div class="footer-content__contacts-title">Центральный офис</div><a class="footer-content__contacts-tel" href="tel:+88614725800">8 (86147) 2-58-00</a><a class="footer-content__contacts-email" href="mailto:zdor_prod@mail.ru">zdor_prod@mail.ru</a>
+                        <div class="footer-content__contacts-title">Центральный офис</div>
+                        <a class="footer-content__contacts-tel" href="tel:+88614725800"><?$APPLICATION->IncludeComponent(
+                                "bitrix:main.include",
+                                "",
+                                Array(
+                                    "AREA_FILE_SHOW" => "file",
+                                    "AREA_FILE_SUFFIX" => "inc",
+                                    "EDIT_TEMPLATE" => "",
+                                    "PATH" => SITE_TEMPLATE_PATH . '/include/includes/phone.php'
+                                )
+                            );?></a>
+                        <a class="footer-content__contacts-email" href="mailto:zdor_prod@mail.ru"><?$APPLICATION->IncludeComponent(
+                                "bitrix:main.include",
+                                "",
+                                Array(
+                                    "AREA_FILE_SHOW" => "file",
+                                    "AREA_FILE_SUFFIX" => "inc",
+                                    "EDIT_TEMPLATE" => "",
+                                    "PATH" => SITE_TEMPLATE_PATH . "/include/includes/email.php"
+                                )
+                            );?></a>
                     </div>
                 </div>
             </div>
-            <div class="footer-content__row mid">
-                <div class="footer-content__subcol left">
-                    <div class="footer-content__subcol-top">
-                        <nav class="footer-content__nav">
-                            <ul class="footer-content__nav-list">
-                                <li class="footer-nav__list-item"><a class="footer-content__nav-item" href="#">О компании</a></li>
-                                <li class="footer-nav__list-item"><a class="footer-content__nav-item" href="#">Работа у нас</a></li>
-                                <li class="footer-nav__list-item"><a class="footer-content__nav-item" href="#">Новости и акции</a></li>
-                                <li class="footer-nav__list-item"><a class="footer-content__nav-item" href="#">Торговые марки</a></li>
-                                <li class="footer-nav__list-item"><a class="footer-content__nav-item" href="#">Партнерам</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-                <div class="footer-content__subcol">
-                    <div class="footer-content__subcol-top">
-                        <nav class="footer-content__nav">
-                            <ul class="footer-content__nav-list">
-                                <li class="footer-nav__list-item"><a class="footer-content__nav-item" href="#">Рецепты</a></li>
-                                <li class="footer-nav__list-item"><a class="footer-content__nav-item" href="#">Где купить</a></li>
-                                <li class="footer-nav__list-item"><a class="footer-content__nav-item" href="#">Контакты</a></li>
-                                <li class="footer-nav__list-item"><a class="footer-content__nav-item" href="#">Видео</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
+
             <div class="footer-content__row-bot">
                 <div class="footer-content__rect-copy">© 2008-2023 «Здоровые продукты»</div><a class="footer-content__policy" href="#">Политика конфиденциальности</a>
                 <p class="footer-content__cloud-copy">Сделано в <a href="https://cloudmill.ru" target="_blank">Клаудмил</a></p>

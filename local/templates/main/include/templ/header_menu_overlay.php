@@ -107,7 +107,16 @@
                                     "PATH" => SITE_TEMPLATE_PATH . '/include/includes/phone.php'
                                 )
                             );?>
-                        </a><a class="header-main__contacts-mail" href="mailto:zdor_prod@mail.ru">zdor_prod@mail.ru</a>
+                        </a><a class="header-main__contacts-mail" href="mailto:zdor_prod@mail.ru"><?$APPLICATION->IncludeComponent(
+                                "bitrix:main.include",
+                                "",
+                                Array(
+                                    "AREA_FILE_SHOW" => "file",
+                                    "AREA_FILE_SUFFIX" => "inc",
+                                    "EDIT_TEMPLATE" => "",
+                                    "PATH" => SITE_TEMPLATE_PATH . "/include/includes/email.php"
+                                )
+                            );?></a>
                     </div>
                     <div class="header-main__contacts-col right-col">
                         <div class="header-main__contacts-top"><a class="header-main__contacts-policy" href="#">Политика конфиденциальности</a></div>
