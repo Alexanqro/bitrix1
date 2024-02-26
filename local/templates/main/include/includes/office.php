@@ -1,1 +1,1 @@
-<?php
+<div class="header-main__contacts-office">Центральный офис</div>

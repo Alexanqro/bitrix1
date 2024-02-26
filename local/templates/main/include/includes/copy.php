@@ -1,1 +1,1 @@
-<?php
+<div class="header-main__contacts-copy">© 2008-2023 «Здоровые продукты»</div>

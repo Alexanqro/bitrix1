@@ -1,3 +1,6 @@
+<?php if (!defined ('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) { die(); } ?>
+
+
 <div class="header-main" data-header-menu data-overlay-on data-header-component="menu">
     <div class="header-main__wrapper desktop">
         <div class="header-main__inner">
@@ -95,11 +98,20 @@
             <div class="header-main__col right">
                 <div class="header-main__contacts">
                     <div class="header-main__contacts-col">
-                        <div class="header-main__contacts-office">Центральный офис</div>
-                        <a class="header-main__contacts-tel" href="tel:+78614725800">
+                        <?$APPLICATION->IncludeComponent(
+                            "bitrix:main.include",
+                            ".default",
+                            Array(
+                                "AREA_FILE_SHOW" => "file",
+                                "AREA_FILE_SUFFIX" => "inc",
+                                "EDIT_TEMPLATE" => "",
+                                "PATH" => SITE_TEMPLATE_PATH . '/include/includes/office.php'
+                            )
+                        );?>
+
                             <?$APPLICATION->IncludeComponent(
                                 "bitrix:main.include",
-                                "",
+                                ".default",
                                 Array(
                                     "AREA_FILE_SHOW" => "file",
                                     "AREA_FILE_SUFFIX" => "inc",
@@ -107,22 +119,51 @@
                                     "PATH" => SITE_TEMPLATE_PATH . '/include/includes/phone.php'
                                 )
                             );?>
-                        </a><a class="header-main__contacts-mail" href="mailto:zdor_prod@mail.ru"><?$APPLICATION->IncludeComponent(
+                        <?$APPLICATION->IncludeComponent(
                                 "bitrix:main.include",
-                                "",
+                                ".default",
                                 Array(
                                     "AREA_FILE_SHOW" => "file",
                                     "AREA_FILE_SUFFIX" => "inc",
                                     "EDIT_TEMPLATE" => "",
                                     "PATH" => SITE_TEMPLATE_PATH . "/include/includes/email.php"
                                 )
-                            );?></a>
+                            );?>
                     </div>
                     <div class="header-main__contacts-col right-col">
-                        <div class="header-main__contacts-top"><a class="header-main__contacts-policy" href="#">Политика конфиденциальности</a></div>
+                        <div class="header-main__contacts-top">
+                            <?$APPLICATION->IncludeComponent(
+                                "bitrix:main.include",
+                                ".default",
+                                Array(
+                                    "AREA_FILE_SHOW" => "file",
+                                    "AREA_FILE_SUFFIX" => "inc",
+                                    "EDIT_TEMPLATE" => "",
+                                    "PATH" => SITE_TEMPLATE_PATH . "/include/includes/policy.php"
+                                )
+                            );?>
+                        </div>
                         <div class="header-main__contacts-bot">
-                            <div class="header-main__contacts-copy">© 2008-2023 «Здоровые продукты»</div>
-                            <div class="header-main__contacts-dev"><span>Сделано в</span><a href="#" target="blank"> Клаудмил</a></div>
+                            <?$APPLICATION->IncludeComponent(
+                                "bitrix:main.include",
+                                ".default",
+                                Array(
+                                    "AREA_FILE_SHOW" => "file",
+                                    "AREA_FILE_SUFFIX" => "inc",
+                                    "EDIT_TEMPLATE" => "",
+                                    "PATH" => SITE_TEMPLATE_PATH . "/include/includes/copy.php"
+                                )
+                            );?>
+                            <?$APPLICATION->IncludeComponent(
+                                "bitrix:main.include",
+                                ".default",
+                                Array(
+                                    "AREA_FILE_SHOW" => "file",
+                                    "AREA_FILE_SUFFIX" => "inc",
+                                    "EDIT_TEMPLATE" => "",
+                                    "PATH" => SITE_TEMPLATE_PATH . "/include/includes/dev.php"
+                                )
+                            );?>
                         </div>
                     </div>
                 </div>
