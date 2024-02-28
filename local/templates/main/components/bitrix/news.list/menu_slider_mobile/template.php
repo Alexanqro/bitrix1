@@ -2,32 +2,26 @@
 
 $this->setFrameMode(true);
 
-
 ?>
 
 <?php if ($arResult['ITEMS']): ?>
+    <div class="main-slider__wrapper">
+    <div class="swiper main-swiper-mobile">
     <div class="swiper-wrapper">
-        <?php
-        foreach ($arResult['ITEMS'] as $arItem): ?>
+
+        <?php foreach ($arResult['ITEMS'] as $arItem): ?>
+
             <div class="swiper-slide main-slider__slide">
-                <div class="main-slider__slide-bg desktop" data-swiper-parallax="1440" data-bg-parallax>
+                <div class="main-slider__slide-bg mobile bg-bg-bg">
                     <picture class="picture">
-                        <source type="image/webp"
-                                srcset="<?= $arItem['PREVIEW_PICTURE']['SRC'] ?>">
-                        <img class="picture__img" src="<?= $arItem['PREVIEW_PICTURE']['SRC'] ?>">
-                    </picture>
-                </div>
-                <div class="main-slider__slide-bg devices">
-                    <picture class="picture">
-                        <source type="image/webp"
-                                srcset="<?= $arItem['PREVIEW_PICTURE']['SRC'] ?>">
-                        <img class="picture__img" src="<?= $arItem['PREVIEW_PICTURE']['SRC'] ?>">
+                        <source type="image/webp" srcset="<?=$arItem['SRC_IMG']?>">
+                        <img class="picture__img" src="<?=$arItem['SRC_IMG']?>">
                     </picture>
                 </div>
                 <div class="main-slider__content">
 
                     <?php if ($arItem['PROPERTIES']['LOGO']['VALUE'] == "top"): ?>
-                        <div class="main-slider__content-icon" data-swiper-parallax="-500">
+                        <div class="main-slider__content-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="100" height="70" viewbox="0 0 100 70"
                                  fill="none">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -41,16 +35,18 @@ $this->setFrameMode(true);
                                       fill="#FFE979"></path>
                             </svg>
                         </div>
+                    <?php endif; ?>
 
-                    <? elseif ($arItem['PROPERTIES']['LOGO']['VALUE'] == "new"): ?>
-                        <div class="main-slider__content-icon" data-swiper-parallax="-500">
+                    <?php if ($arItem['PROPERTIES']['LOGO']['VALUE'] == "new"): ?>
+                        <div class="main-slider__content-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="100" height="70" viewbox="0 0 100 70"
                                  fill="none">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
                                       d="M88.0226 26.7151C91.8593 23.4577 93.7641 20.2092 93.0947 17.3613C91.2302 9.42969 70.1042 7.60901 45.9085 13.2947C21.7129 18.9804 3.60983 30.0193 5.4743 37.9509C6.13886 40.778 9.25045 42.8287 14.0759 44.0399C10.2391 47.2974 8.33433 50.5459 9.00378 53.3938C10.8683 61.3254 31.9942 63.146 56.1899 57.4604C80.3856 51.7747 98.4886 40.7357 96.6241 32.8041C95.9596 29.977 92.848 27.9263 88.0226 26.7151Z"
                                       fill="#3FFFDC"></path>
                                 <mask id="mask0_301_203" style="mask-type:alpha" maskunits="userSpaceOnUse" x="5" y="9"
-                                      width="92" height="52">
+                                      width="92"
+                                      height="52">
                                     <path fill-rule="evenodd" clip-rule="evenodd"
                                           d="M88.0226 26.7154C91.8593 23.4579 93.7641 20.2094 93.0947 17.3615C91.2302 9.42993 70.1042 7.60925 45.9085 13.2949C21.7129 18.9806 3.60983 30.0196 5.4743 37.9512C6.13886 40.7783 9.25045 42.829 14.0759 44.0402C10.2391 47.2976 8.33433 50.5461 9.00378 53.394C10.8683 61.3256 31.9942 63.1463 56.1899 57.4606C80.3856 51.7749 98.4886 40.7359 96.6241 32.8043C95.9596 29.9773 92.848 27.9266 88.0226 26.7154Z"
                                           fill="#3FFFDC"></path>
@@ -67,24 +63,23 @@ $this->setFrameMode(true);
                                       fill="#03856D"></path>
                             </svg>
                         </div>
-
                     <?php endif; ?>
 
+                    <div class="main-slider__content-title"><?= $arItem['NAME'] ?></div>
+                    <div class="main-slider__content-desk"><?= $arItem['PREVIEW_TEXT'] ?></div>
 
-                    <div class="main-slider__content-title" data-swiper-parallax="-1000"><?= $arItem['NAME'] ?></div>
-                    <div class="main-slider__content-desk"
-                         data-swiper-parallax="-2000"><?= $arItem['PREVIEW_TEXT'] ?>
-                    </div>
-                    <div class="main-slider__content-bot" data-swiper-parallax="-2500">
-                        <a class="main-slider__content-button btn-hover_parent"
-                           href="<?= $arItem['PROPERTIES']['LINK']['VALUE'] ?>">
-                            <div class="btn-hover_circle white"></div>
-                            <p>Подробнее</p>
-                        </a>
-                    </div>
+                    <?php if($arItem['PROPERTIES']['LINK']['VALUE'] != ''): ?>
+                        <div class="main-slider__content-bot">
+                            <a class="main-slider__content-button" href="<?= $arItem['PROPERTIES']['LINK']['VALUE'] ?>">
+                                <p>Подробнее</p>
+                            </a>
+                        </div>
+                    <?php endif ?>
+
                 </div>
             </div>
         <?php endforeach; ?>
-
+    </div>
+    </div>
     </div>
 <?php endif; ?>
