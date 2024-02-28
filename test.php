@@ -63,3 +63,12 @@ $APPLICATION->IncludeComponent("bitrix:news.list", "menu_slider", array(
 ),
     false
 );
+?>
+<div><?php $APPLICATION->ShowPanel();?></div>
+
+
+foreach ($arResult['ITEMS'] as $key => $arItem) {
+$resize = CFile::ResizeImageGet($arItem['PREVIEW_PICTURE'], ["width" => 1840, "height" => 760], BX_RESIZE_IMAGE_PROPORTIONAL, true);
+$arResult['ITEMS'][$key]['PREVIEW_PICTURE'] = $resize;
+}
+

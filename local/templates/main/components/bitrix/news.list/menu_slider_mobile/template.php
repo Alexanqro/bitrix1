@@ -2,9 +2,11 @@
 
 $this->setFrameMode(true);
 
+
+
 ?>
 
-<?php if ($arResult['ITEMS']): ?>
+<?php if (!empty($arResult['ITEMS'])): ?>
     <div class="main-slider__wrapper">
     <div class="swiper main-swiper-mobile">
     <div class="swiper-wrapper">
@@ -14,8 +16,8 @@ $this->setFrameMode(true);
             <div class="swiper-slide main-slider__slide">
                 <div class="main-slider__slide-bg mobile bg-bg-bg">
                     <picture class="picture">
-                        <source type="image/webp" srcset="<?=$arItem['SRC_IMG']?>">
-                        <img class="picture__img" src="<?=$arItem['SRC_IMG']?>">
+                        <source type="image/webp" srcset="<?=$arItem['DETAIL_PICTURE']['SRC']?>">
+                        <img class="picture__img" src="<?=$arItem['DETAIL_PICTURE']['SRC']?>">
                     </picture>
                 </div>
                 <div class="main-slider__content">
@@ -83,3 +85,4 @@ $this->setFrameMode(true);
     </div>
     </div>
 <?php endif; ?>
+
