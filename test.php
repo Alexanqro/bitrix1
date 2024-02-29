@@ -72,3 +72,17 @@ $resize = CFile::ResizeImageGet($arItem['PREVIEW_PICTURE'], ["width" => 1840, "h
 $arResult['ITEMS'][$key]['PREVIEW_PICTURE'] = $resize;
 }
 
+if (!function_exists('dd')) {
+function dd($var) {
+global $APPLICATION;
+
+$APPLICATION->RestartBuffer();
+echo '<pre>';
+        var_dump($var);
+        echo '</pre>';
+die();
+}
+}
+
+dd($arResult);
+
