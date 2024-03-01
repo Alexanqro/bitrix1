@@ -1,5 +1,6 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
 
+<? if(!empty($arResult['SECTIONS'])):?>
 <div class="main-catalog__list" data-aos="fade-up" data-aos-duration="1500">
     <?foreach($arResult['SECTIONS'] as $arItem):?>
         <a class="main-catalog__item btn-hover_parent" href="#">
@@ -11,8 +12,8 @@
             </div>
             <div class="main-catalog__item-bg mobile">
                 <picture class="picture">
-                    <source type="image/webp" srcset="assets/images/main-catalog-item-bg1-mobile.webp">
-                    <img class="picture__img" src="assets/images/main-catalog-item-bg1-mobile.png">
+                    <source type="image/webp" srcset="<?= $arItem['DETAIL_PICTURE']?>">
+                    <img class="picture__img" src="<?= $arItem['DETAIL_PICTURE']?>">
                 </picture>
             </div>
             <? if($arItem['UF_COLOR2'] === 'blue'):?>
@@ -37,3 +38,4 @@
         </a>
     <? endforeach;?>
 </div>
+<? endif;?>

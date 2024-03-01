@@ -1,6 +1,5 @@
 <?php
 include($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_before.php");
-
 $APPLICATION->IncludeComponent("bitrix:news.list", "menu_slider", array(
     "ACTIVE_DATE_FORMAT" => "d.m.Y",    // Формат показа даты
     "ADD_SECTIONS_CHAIN" => "Y",    // Включать раздел в цепочку навигации
