@@ -1,11 +1,4 @@
-<?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
-
-$this->setFrameMode(true);
-
-
-?>
-
-
+<?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die(); ?>
     <div class="main-slider__wrapper">
         <div class="swiper main-swiper">
 <?php if (!empty($arResult['ITEMS'])): ?>
@@ -17,15 +10,13 @@ $this->setFrameMode(true);
             <div class="swiper-slide main-slider__slide">
                 <div class="main-slider__slide-bg desktop" data-swiper-parallax="1440" data-bg-parallax>
                     <picture class="picture">
-                        <source type="image/webp"
-                                srcset="<?= $arItem['PREVIEW_PICTURE']['SRC'] ?>">
+                        <source type="image/webp" srcset="<?= $arItem['PREVIEW_PICTURE']['SRC'] ?>">
                         <img class="picture__img" src="<?= $arItem['PREVIEW_PICTURE']['SRC'] ?>">
                     </picture>
                 </div>
                 <div class="main-slider__slide-bg devices">
                     <picture class="picture">
-                        <source type="image/webp"
-                                srcset="<?= $arItem['PREVIEW_PICTURE']['SRC'] ?>">
+                        <source type="image/webp" srcset="<?= $arItem['PREVIEW_PICTURE']['SRC'] ?>">
                         <img class="picture__img" src="<?= $arItem['PREVIEW_PICTURE']['SRC'] ?>">
                     </picture>
                 </div>

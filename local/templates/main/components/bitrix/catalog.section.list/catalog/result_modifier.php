@@ -35,8 +35,8 @@ foreach ($arResult['SECTIONS'] as $key => $arItem){
 
 
 
-
 <!---->
+
 <?php
 //   echo '<pre>';
 //   var_dump($arResult);
@@ -54,6 +54,6 @@ foreach ($arResult['SECTIONS'] as $key => $arItem){
 //    }
 //}
 //
-//dd($arResult);
-//
+//dd($arResult['SECTIONS']);
+
 //?>
