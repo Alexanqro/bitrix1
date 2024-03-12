@@ -26,7 +26,6 @@ while ($sectionList = $rsSections->GetNext()){
 
 
 
-
 //
 //if (!function_exists('dd')) {
 //    function dd($var)

@@ -9,4 +9,4 @@ while ($sectionList = $rsSections->GetNext()){
 //echo '<pre>';
 //print_r($arResult['ITEMS']);
 //
-//echo '</pre>';
+//echsdsdso '</pre>';

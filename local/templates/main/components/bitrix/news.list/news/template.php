@@ -18,7 +18,7 @@ $this->setFrameMode(true);
 //echo '<pre>';
 //print_r($arResult['SECTIONS']);
 //echo '</pre>';
-//die();
+//die();sdsdsd
 //?>
 
 
