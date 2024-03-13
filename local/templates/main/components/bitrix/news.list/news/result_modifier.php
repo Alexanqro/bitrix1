@@ -1,12 +1,16 @@
 <?php
 
-$rsSections = CIBlockSection::GetList(array(), array('IBLOCK_ID' => $arParams['IBLOCK_ID']),array(), array('NAME', 'CODE'));
+$rsSections = CIBlockSection::GetList(
+    [],
+    ['IBLOCK_ID' => $arParams['IBLOCK_ID']],
+    ['NAME', 'CODE', 'SECTION_PAGE_URL']
+);
 
 while ($sectionList = $rsSections->GetNext()){
-    $arResult['SECTIONS'][] = $sectionList;
+    $arResult['SECTION'][] = $sectionList;
 }
 
 //echo '<pre>';
-//print_r($arResult['ITEMS']);
+//print_r($arResult);
 //
-//echsdsdso '</pre>';
+//'</pre>';

@@ -8,14 +8,19 @@ foreach ($arResult['ITEMS'] as $key => $arItem) {
     $arResult['ITEMS'][$key]['PREVIEW_PICTURE']['SRC'] = $resize['src'];
 }
 
+
 $rsSections = CIBlockSection::GetList(array(), array('IBLOCK_ID' => $arParams['IBLOCK_ID']),array(), array('NAME', 'CODE'));
 
 while ($sectionList = $rsSections->GetNext()){
- $arResult['SECTIONS'][] = $sectionList;
+    $arResult['SECTION'][] = $sectionList;
 }
 
-
-
+//
+//echo '<pre>';
+//
+//print_r($arResult['SECTION'][0]['CODE']);
+//echo '</pre>';
+//
 
 
 

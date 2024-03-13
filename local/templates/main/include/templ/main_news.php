@@ -40,7 +40,7 @@
                                 "bitrix:news.list",
                                 "news_slider",
                                 Array(
-                                    "ACTIVE_DATE_FORMAT" => "d.m.Y",
+                                    "ACTIVE_DATE_FORMAT" => "j F Y",
                                     "ADD_SECTIONS_CHAIN" => "Y",
                                     "AJAX_MODE" => "N",
                                     "AJAX_OPTION_ADDITIONAL" => "",
@@ -121,7 +121,7 @@
             </div>
         </div>
         <div class="main-news__bot">
-            <a class="main-news__bot-button btn-hover_parent" href="">
+            <a class="main-news__bot-button btn-hover_parent" href="/news/">
                 <div class="btn-hover_circle"></div>
                 <span>Все новости и акции</span>
             </a>

@@ -1,12 +1,7 @@
 <?php
-if (!defined ('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
-{
-    die();
-}
+if (!defined ('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {die();}
 
 ;?>
-
-
     <header class="header" id="header">
         <div class="header-wrapper">
             <div class="header-row">
@@ -47,7 +42,7 @@ if (!defined ('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                         </div>
                     </div>
                 </div>
-                <div class="header-col mid"><a class="header-logo" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="143" height="138" viewbox="0 0 143 138" fill="none">
+                <div class="header-col mid"><a class="header-logo" href="/"><svg xmlns="http://www.w3.org/2000/svg" width="143" height="138" viewbox="0 0 143 138" fill="none">
                             <path d="M54.2471 18.2906C52.308 -3.91021 85.8654 -7.02123 87.9995 15.16C89.9347 37.3568 56.3774 40.4718 54.2471 18.2906Z" fill="#F64653"></path>
                             <path d="M70.6727 69.5419C70.505 57.9923 73.8369 33.3906 104.523 28.7417C106.676 28.4161 108.089 30.9465 106.692 32.6256L74.863 71.0327C73.4545 72.7314 70.7039 71.7546 70.6727 69.5419Z" fill="#0068FF"></path>
                             <path d="M65.4174 62.1195C70.1812 35.1325 34.4741 22.6728 35.785 32.1314C35.8943 32.9082 36.2454 33.6339 36.7331 34.2459C40.225 38.6045 60.2985 63.6731 60.2985 63.6731C61.9216 65.6974 65.195 64.7127 65.4174 62.1195Z" fill="#0068FF"></path>
