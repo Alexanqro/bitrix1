@@ -28,8 +28,8 @@ $APPLICATION->ShowHead();
 		"DISPLAY_PICTURE" => "Y",	// Выводить детальное изображение
 		"DISPLAY_PREVIEW_TEXT" => "Y",	// Выводить текст анонса
 		"DISPLAY_TOP_PAGER" => "N",	// Выводить над списком
-		"ELEMENT_CODE" => "",	// Код новости
-		"ELEMENT_ID" => $_REQUEST["ELEMENT_ID"],	// ID новости
+		"ELEMENT_CODE" => "10",	// Код новости
+		"ELEMENT_ID" => $_REQUEST["ELEMENT_CODE"],	// ID новости
 		"FIELD_CODE" => array(	// Поля
 			0 => "",
 			1 => "",

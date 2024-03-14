@@ -24,9 +24,9 @@
                     <source type="image/webp" srcset="<?=$arItem['PREVIEW_PICTURE']['SRC']?>">
                     <img class="picture__img" src="<?=$arItem['PREVIEW_PICTURE']['SRC']?>">
                 </picture>
-                <span class="main-news__card-plug"><?=$arResult['SECTION'][$key]['NAME']?></span>
+                <span class="main-news__card-plug"><?= $arResult['SECTION'][$arItem['IBLOCK_SECTION_ID']]['NAME']?></span>
             </div>
-            <p class="main-news__card-date"><?=$arItem['PREVIEW_PICTURE']['TIMESTAMP_X']?></p>
+            <p class="main-news__card-date"><?=$arItem['DATE_CREATE']?></p>
             <p class="main-news__card-title"><?=$arItem['PREVIEW_TEXT']?></p>
 
         </a>

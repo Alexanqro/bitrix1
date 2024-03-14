@@ -12,84 +12,103 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 ?>
-<div class="news-detail">
-	<?if($arParams["DISPLAY_PICTURE"]!="N" && is_array($arResult["DETAIL_PICTURE"])):?>
-		<img
-			class="detail_picture"
-			border="0"
-			src="<?=$arResult["DETAIL_PICTURE"]["SRC"]?>"
-			width="<?=$arResult["DETAIL_PICTURE"]["WIDTH"]?>"
-			height="<?=$arResult["DETAIL_PICTURE"]["HEIGHT"]?>"
-			alt="<?=$arResult["DETAIL_PICTURE"]["ALT"]?>"
-			title="<?=$arResult["DETAIL_PICTURE"]["TITLE"]?>"
-			/>
-	<?endif?>
-	<?if($arParams["DISPLAY_DATE"]!="N" && $arResult["DISPLAY_ACTIVE_FROM"]):?>
-		<span class="news-date-time"><?=$arResult["DISPLAY_ACTIVE_FROM"]?></span>
-	<?endif;?>
-	<?if($arParams["DISPLAY_NAME"]!="N" && $arResult["NAME"]):?>
-		<h3><?=$arResult["NAME"]?></h3>
-	<?endif;?>
-	<?if($arParams["DISPLAY_PREVIEW_TEXT"]!="N" && ($arResult["FIELDS"]["PREVIEW_TEXT"] ?? '') !== ''):?>
-		<p><?=$arResult["FIELDS"]["PREVIEW_TEXT"];unset($arResult["FIELDS"]["PREVIEW_TEXT"]);?></p>
-	<?endif;?>
-	<?if($arResult["NAV_RESULT"]):?>
-		<?if($arParams["DISPLAY_TOP_PAGER"]):?><?=$arResult["NAV_STRING"]?><br /><?endif;?>
-		<?echo $arResult["NAV_TEXT"];?>
-		<?if($arParams["DISPLAY_BOTTOM_PAGER"]):?><br /><?=$arResult["NAV_STRING"]?><?endif;?>
-	<?elseif($arResult["DETAIL_TEXT"] <> ''):?>
-		<?echo $arResult["DETAIL_TEXT"];?>
-	<?else:?>
-		<?echo $arResult["PREVIEW_TEXT"];?>
-	<?endif?>
-	<div style="clear:both"></div>
-	<br />
-	<?foreach($arResult["FIELDS"] as $code=>$value):
-		if ('PREVIEW_PICTURE' == $code || 'DETAIL_PICTURE' == $code)
-		{
-			?><?=GetMessage("IBLOCK_FIELD_".$code)?>:&nbsp;<?
-			if (!empty($value) && is_array($value))
-			{
-				?><img border="0" src="<?=$value["SRC"]?>" width="<?=$value["WIDTH"]?>" height="<?=$value["HEIGHT"]?>"><?
-			}
-		}
-		else
-		{
-			?><?=GetMessage("IBLOCK_FIELD_".$code)?>:&nbsp;<?=$value;?><?
-		}
-		?><br />
-	<?endforeach;
-	foreach($arResult["DISPLAY_PROPERTIES"] as $pid=>$arProperty):?>
 
-		<?=$arProperty["NAME"]?>:&nbsp;
-		<?if(is_array($arProperty["DISPLAY_VALUE"])):?>
-			<?=implode("&nbsp;/&nbsp;", $arProperty["DISPLAY_VALUE"]);?>
-		<?else:?>
-			<?=$arProperty["DISPLAY_VALUE"];?>
-		<?endif?>
-		<br />
-	<?endforeach;
-	if(array_key_exists("USE_SHARE", $arParams) && $arParams["USE_SHARE"] == "Y")
-	{
-		?>
-		<div class="news-detail-share">
-			<noindex>
-			<?
-			$APPLICATION->IncludeComponent("bitrix:main.share", "", array(
-					"HANDLERS" => $arParams["SHARE_HANDLERS"],
-					"PAGE_URL" => $arResult["~DETAIL_PAGE_URL"],
-					"PAGE_TITLE" => $arResult["~NAME"],
-					"SHORTEN_URL_LOGIN" => $arParams["SHARE_SHORTEN_URL_LOGIN"],
-					"SHORTEN_URL_KEY" => $arParams["SHARE_SHORTEN_URL_KEY"],
-					"HIDE" => $arParams["SHARE_HIDE"],
-				),
-				$component,
-				array("HIDE_ICONS" => "Y")
-			);
-			?>
-			</noindex>
-		</div>
-		<?
-	}
-	?>
-</div>
+<!--<section class="news-detail">-->
+<!--    <div class="news-detail__top">-->
+<!--        <h2 class="news-detail__title">-->
+<!--            --><?//=$arResult["NAME"]?>
+<!--        </h2>-->
+<!--        <div class="title-rombs">-->
+<!--            <div class="title-rombs__item"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewbox="0 0 20 20" fill="none">-->
+<!--                    <path d="M0.676674 9.3773C3.7119 9.6279 10.0934 11.1315 10.6292 19.3385C10.6659 19.9153 9.97245 20.222 9.562 19.8116L0.192768 10.4445C-0.22201 10.0297 0.0955527 9.32977 0.676674 9.3773Z" fill="#F64653"></path>-->
+<!--                    <path d="M10.6226 0.673481C10.372 3.70871 8.86846 10.0902 0.661469 10.626C0.0846682 10.6627 -0.222082 9.96926 0.188375 9.5588L9.55544 0.189576C9.97022 -0.227362 10.6701 0.0923602 10.6226 0.673481Z" fill="#F64653"></path>-->
+<!--                    <path d="M19.3243 9.3773C16.289 9.6279 9.90752 11.1315 9.37176 19.3385C9.33504 19.9153 10.0285 20.222 10.4389 19.8116L19.8082 10.4445C20.2229 10.0297 19.9054 9.32977 19.3243 9.3773Z" fill="#F64653"></path>-->
+<!--                    <path d="M9.37828 0.673481C9.62671 3.70871 11.1325 10.0902 19.3395 10.626C19.9163 10.6627 20.223 9.96926 19.8125 9.5588L10.4455 0.189576C10.0307 -0.227362 9.33075 0.0923602 9.37828 0.673481Z" fill="#F64653"></path>-->
+<!--                </svg></div>-->
+<!--            <div class="title-rombs__item"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewbox="0 0 20 20" fill="none">-->
+<!--                    <path d="M0.676674 9.3773C3.7119 9.6279 10.0934 11.1315 10.6292 19.3385C10.6659 19.9153 9.97245 20.222 9.562 19.8116L0.192768 10.4445C-0.22201 10.0297 0.0955527 9.32977 0.676674 9.3773Z" fill="#F64653"></path>-->
+<!--                    <path d="M10.6226 0.673481C10.372 3.70871 8.86846 10.0902 0.661469 10.626C0.0846682 10.6627 -0.222082 9.96926 0.188375 9.5588L9.55544 0.189576C9.97022 -0.227362 10.6701 0.0923602 10.6226 0.673481Z" fill="#F64653"></path>-->
+<!--                    <path d="M19.3243 9.3773C16.289 9.6279 9.90752 11.1315 9.37176 19.3385C9.33504 19.9153 10.0285 20.222 10.4389 19.8116L19.8082 10.4445C20.2229 10.0297 19.9054 9.32977 19.3243 9.3773Z" fill="#F64653"></path>-->
+<!--                    <path d="M9.37828 0.673481C9.62671 3.70871 11.1325 10.0902 19.3395 10.626C19.9163 10.6627 20.223 9.96926 19.8125 9.5588L10.4455 0.189576C10.0307 -0.227362 9.33075 0.0923602 9.37828 0.673481Z" fill="#F64653"></path>-->
+<!--                </svg></div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="news-detail__time">-->
+<!--        <div class="news-detail__date">--><?//=$arResult['DATE_CREATE']?><!--</div>-->
+<!--        <div class="news-detail__plug">--><?//=$arResult['SECTION_NAME']?><!--</div>-->
+<!--    </div>-->
+<!--    <div class="news-detail__content" data-aos="fade-up">-->
+<!--        --><?//echo $arResult["DETAIL_TEXT"];?>
+<!--    </div>-->
+<!--</section>-->
+
+<section class="news-detail">
+    <div class="news-detail__top">
+        <h2 class="news-detail__title"><?=$arResult['NAME']?></h2>
+        <div class="title-rombs">
+            <div class="title-rombs__item"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewbox="0 0 20 20" fill="none">
+                    <path d="M0.676674 9.3773C3.7119 9.6279 10.0934 11.1315 10.6292 19.3385C10.6659 19.9153 9.97245 20.222 9.562 19.8116L0.192768 10.4445C-0.22201 10.0297 0.0955527 9.32977 0.676674 9.3773Z" fill="#F64653"></path>
+                    <path d="M10.6226 0.673481C10.372 3.70871 8.86846 10.0902 0.661469 10.626C0.0846682 10.6627 -0.222082 9.96926 0.188375 9.5588L9.55544 0.189576C9.97022 -0.227362 10.6701 0.0923602 10.6226 0.673481Z" fill="#F64653"></path>
+                    <path d="M19.3243 9.3773C16.289 9.6279 9.90752 11.1315 9.37176 19.3385C9.33504 19.9153 10.0285 20.222 10.4389 19.8116L19.8082 10.4445C20.2229 10.0297 19.9054 9.32977 19.3243 9.3773Z" fill="#F64653"></path>
+                    <path d="M9.37828 0.673481C9.62671 3.70871 11.1325 10.0902 19.3395 10.626C19.9163 10.6627 20.223 9.96926 19.8125 9.5588L10.4455 0.189576C10.0307 -0.227362 9.33075 0.0923602 9.37828 0.673481Z" fill="#F64653"></path>
+                </svg></div>
+            <div class="title-rombs__item"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewbox="0 0 20 20" fill="none">
+                    <path d="M0.676674 9.3773C3.7119 9.6279 10.0934 11.1315 10.6292 19.3385C10.6659 19.9153 9.97245 20.222 9.562 19.8116L0.192768 10.4445C-0.22201 10.0297 0.0955527 9.32977 0.676674 9.3773Z" fill="#F64653"></path>
+                    <path d="M10.6226 0.673481C10.372 3.70871 8.86846 10.0902 0.661469 10.626C0.0846682 10.6627 -0.222082 9.96926 0.188375 9.5588L9.55544 0.189576C9.97022 -0.227362 10.6701 0.0923602 10.6226 0.673481Z" fill="#F64653"></path>
+                    <path d="M19.3243 9.3773C16.289 9.6279 9.90752 11.1315 9.37176 19.3385C9.33504 19.9153 10.0285 20.222 10.4389 19.8116L19.8082 10.4445C20.2229 10.0297 19.9054 9.32977 19.3243 9.3773Z" fill="#F64653"></path>
+                    <path d="M9.37828 0.673481C9.62671 3.70871 11.1325 10.0902 19.3395 10.626C19.9163 10.6627 20.223 9.96926 19.8125 9.5588L10.4455 0.189576C10.0307 -0.227362 9.33075 0.0923602 9.37828 0.673481Z" fill="#F64653"></path>
+                </svg></div>
+        </div>
+    </div>
+    <div class="news-detail__time">
+        <div class="news-detail__date"><?= $arResult['DATE_CREATE'] ?></div>
+        <div class="news-detail__plug"><?= $arResult['SECTION_NAME'] ?></div>
+    </div>
+    <div class="news-detail__content" data-aos="fade-up">
+        <p>Юлия Снегирева, сотрудница частной столичной лаборатории, поделилась рекомендациями по выбору мороженого. Об этом сообщает "Вечерняя Москва". Прежде всего, тщательно изучите состав, указанный на этикетке. Если вы планируете приобрести эскимо, то обратите внимание, что он должен содержать не менее 40 процентов молока, так как этот вид мороженого, согласно словам Снегиревой, относится к подгруппе молочных продуктов.</p>
+        <h2>Растительные жиры</h2>
+        <p>Важно, чтобы в составе мороженого не было растительных жиров. Однако наличие различных стабилизаторов в составе не стоит вызывать беспокойство, так как они помогают сохранять форму, отмечает эксперт. Как проверить качество вашей любимой лакомство дома?</p>
+        <div class="news-detail__img">
+            <picture class="picture">
+                <source type="image/webp" srcset="<?= $arResult['PREVIEW_PICTURE']['SRC'] ?>">
+                <img class="picture__img" src="<?= $arResult['PREVIEW_PICTURE']['SRC'] ?>">
+            </picture>
+        </div>
+        <h2>Как проверить качество любимого всеми лакомства в домашних условиях?</h2>
+        <p>Как проверить качество любимого всеми лакомства в домашних условиях? Вынутое из морозильной камеры закаленное мороженое должно откалываться, а не размазываться. Если мороженое покрыто кристалликами льда, то его, скорее всего, замораживали повторно или неправильно хранили в магазине. Вкус у него будет не самый лучший. Не рекомендуется также покупать мороженое с деформированной упаковкой или с заканчивающимся сроком годности, если вам не нужно пищевое отравление.</p>
+        <ul>
+            <li>Вынутое из морозильной камеры закаленное мороженое должно откалываться, а не размазываться</li>
+            <li>Если мороженое покрыто кристалликами льда, то его, скорее всего, замораживали повторно или неправильно хранили в магазине</li>
+            <li>Вкус у него будет не самый лучший</li>
+        </ul>
+        <h2>Жирное выделение текста</h2>
+        <p>Важно, чтобы в составе <strong>мороженого не было растительных</strong>жиров. Однако наличие различных стабилизаторов в составе не стоит вызывать беспокойство, так как они помогают сохранять форму, отмечает эксперт. Как проверить качество вашей любимой лакомство дома?</p>
+        <ol>
+            <li>Вынутое из морозильной камеры закаленное мороженое должно откалываться, а не размазываться</li>
+            <li>Если мороженое покрыто кристалликами льда, то его, скорее всего, замораживали повторно или неправильно хранили в магазине</li>
+            <li>Вкус у него будет не самый лучший</li>
+        </ol>
+        <h2>Курсивное выделение текст</h2>
+        <p>Важно, чтобы в составе мороженого <em>не было растительных жиров.</em></p>
+        <h2>Подчеркнутый текст</h2>
+        <p>Однако наличие <u>различных стабилизаторов в составе</u>&nbsp;не стоит вызывать беспокойство, так как они помогают сохранять форму, отмечает эксперт. Как проверить качество вашей любимой лакомство дома?</p>
+        <div class="news-detail__img">
+            <picture class="picture">
+                <source type="image/webp" srcset="assets/images/main-news-card2.webp"><img class="picture__img" src="assets/images/main-news-card2.png">
+            </picture>
+        </div>
+        <h4>Подпись к фото</h4>
+    </div>
+</section>
+
+
+<?
+
+
+//echo '<pre>';
+//
+//print_r($arResult);
+//echo '</pre>';
+
+
+?>

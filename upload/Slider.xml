@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<КоммерческаяИнформация ВерсияСхемы="2.021" ДатаФормирования="2024-02-29T18:55:24">
+<КоммерческаяИнформация ВерсияСхемы="2.021" ДатаФормирования="2024-03-13T18:46:16">
 	<Классификатор>
 		<Ид>1</Ид>
 		<Наименование>Слайдер на главной странице</Наименование>
@@ -106,7 +106,7 @@
 				<БитриксОбязательное>false</БитриксОбязательное>
 				<БитриксЗначениеПоУмолчанию>s:0:&quot;&quot;;</БитриксЗначениеПоУмолчанию>
 				<Сериализовано>1</Сериализовано>
-				<БитриксРасширенныеПараметры>a:2:{i:0;a:3:{s:9:&quot;MODULE_ID&quot;;s:6:&quot;iblock&quot;;s:10:&quot;FEATURE_ID&quot;;s:14:&quot;LIST_PAGE_SHOW&quot;;s:10:&quot;IS_ENABLED&quot;;s:1:&quot;N&quot;;}i:1;a:3:{s:9:&quot;MODULE_ID&quot;;s:6:&quot;iblock&quot;;s:10:&quot;FEATURE_ID&quot;;s:16:&quot;DETAIL_PAGE_SHOW&quot;;s:10:&quot;IS_ENABLED&quot;;s:1:&quot;N&quot;;}}</БитриксРасширенныеПараметры>
+				<БитриксРасширенныеПараметры>a:2:{i:0;a:3:{s:9:&quot;MODULE_ID&quot;;s:6:&quot;iblock&quot;;s:10:&quot;FEATURE_ID&quot;;s:16:&quot;DETAIL_PAGE_SHOW&quot;;s:10:&quot;IS_ENABLED&quot;;s:1:&quot;N&quot;;}i:1;a:3:{s:9:&quot;MODULE_ID&quot;;s:6:&quot;iblock&quot;;s:10:&quot;FEATURE_ID&quot;;s:14:&quot;LIST_PAGE_SHOW&quot;;s:10:&quot;IS_ENABLED&quot;;s:1:&quot;N&quot;;}}</БитриксРасширенныеПараметры>
 			</Свойство>
 			<Свойство>
 				<Ид>4</Ид>
@@ -272,7 +272,7 @@
 				<БитриксТеги></БитриксТеги>
 				<Группы>
 				</Группы>
-				<Картинка>Slider_files/iblock/e15/8wv8dmodmfnujspcbkikqnkjxfeg1iww.png</Картинка>
+				<Картинка>slider_files/iblock/e15/8wv8dmodmfnujspcbkikqnkjxfeg1iww.png</Картинка>
 				<ЗначенияСвойств>
 					<ЗначенияСвойства>
 						<Ид>CML2_ACTIVE</Ид>
@@ -306,7 +306,7 @@
 					</ЗначенияСвойства>
 					<ЗначенияСвойства>
 						<Ид>CML2_PREVIEW_PICTURE</Ид>
-						<Значение>Slider_files/iblock/4ce/8ee74o0dbrdq7kouytbiy03d28419t8s.png</Значение>
+						<Значение>slider_files/iblock/4ce/8ee74o0dbrdq7kouytbiy03d28419t8s.png</Значение>
 					</ЗначенияСвойства>
 					<ЗначенияСвойства>
 						<Ид>1</Ид>
@@ -344,7 +344,7 @@
 				<БитриксТеги></БитриксТеги>
 				<Группы>
 				</Группы>
-				<Картинка>Slider_files/iblock/b5e/f9ecgbgba2ma8c2y2yqcmirw6eut60w4.png</Картинка>
+				<Картинка>slider_files/iblock/b5e/f9ecgbgba2ma8c2y2yqcmirw6eut60w4.png</Картинка>
 				<ЗначенияСвойств>
 					<ЗначенияСвойства>
 						<Ид>CML2_ACTIVE</Ид>
@@ -378,7 +378,7 @@
 					</ЗначенияСвойства>
 					<ЗначенияСвойства>
 						<Ид>CML2_PREVIEW_PICTURE</Ид>
-						<Значение>Slider_files/iblock/bad/6xy03d1r1t6zkxdiqj8gkmpymho8ce1d.png</Значение>
+						<Значение>slider_files/iblock/bad/6xy03d1r1t6zkxdiqj8gkmpymho8ce1d.png</Значение>
 					</ЗначенияСвойства>
 					<ЗначенияСвойства>
 						<Ид>1</Ид>
@@ -416,7 +416,7 @@
 				<БитриксТеги></БитриксТеги>
 				<Группы>
 				</Группы>
-				<Картинка>Slider_files/iblock/e52/t6ony7vt7xr4ithbhh8h5oc7hlkzxe79.png</Картинка>
+				<Картинка>slider_files/iblock/e52/t6ony7vt7xr4ithbhh8h5oc7hlkzxe79.png</Картинка>
 				<ЗначенияСвойств>
 					<ЗначенияСвойства>
 						<Ид>CML2_ACTIVE</Ид>
@@ -450,7 +450,7 @@
 					</ЗначенияСвойства>
 					<ЗначенияСвойства>
 						<Ид>CML2_PREVIEW_PICTURE</Ид>
-						<Значение>Slider_files/iblock/edc/7qu99i4ig510c08u4o15vsbgm8br1538.png</Значение>
+						<Значение>slider_files/iblock/edc/7qu99i4ig510c08u4o15vsbgm8br1538.png</Значение>
 					</ЗначенияСвойства>
 					<ЗначенияСвойства>
 						<Ид>1</Ид>
@@ -488,7 +488,7 @@
 				<БитриксТеги></БитриксТеги>
 				<Группы>
 				</Группы>
-				<Картинка>Slider_files/iblock/14d/ff05u60awk1o141rtnmnrhlj7sz0f0rp.png</Картинка>
+				<Картинка>slider_files/iblock/14d/ff05u60awk1o141rtnmnrhlj7sz0f0rp.png</Картинка>
 				<ЗначенияСвойств>
 					<ЗначенияСвойства>
 						<Ид>CML2_ACTIVE</Ид>
@@ -522,7 +522,7 @@
 					</ЗначенияСвойства>
 					<ЗначенияСвойства>
 						<Ид>CML2_PREVIEW_PICTURE</Ид>
-						<Значение>Slider_files/iblock/0ca/msb4bm6hnxxcisgzvd35opnx4mq2u3dg.png</Значение>
+						<Значение>slider_files/iblock/0ca/msb4bm6hnxxcisgzvd35opnx4mq2u3dg.png</Значение>
 					</ЗначенияСвойства>
 					<ЗначенияСвойства>
 						<Ид>1</Ид>
@@ -560,7 +560,7 @@
 				<БитриксТеги></БитриксТеги>
 				<Группы>
 				</Группы>
-				<Картинка>Slider_files/iblock/332/ya4g04iphtcqgxd39fw0h52kc1j0r90s.png</Картинка>
+				<Картинка>slider_files/iblock/332/ya4g04iphtcqgxd39fw0h52kc1j0r90s.png</Картинка>
 				<ЗначенияСвойств>
 					<ЗначенияСвойства>
 						<Ид>CML2_ACTIVE</Ид>
@@ -594,7 +594,7 @@
 					</ЗначенияСвойства>
 					<ЗначенияСвойства>
 						<Ид>CML2_PREVIEW_PICTURE</Ид>
-						<Значение>Slider_files/iblock/293/tqk6dza4rbu81ztkyzxmoshjdiv3o55v.png</Значение>
+						<Значение>slider_files/iblock/293/tqk6dza4rbu81ztkyzxmoshjdiv3o55v.png</Значение>
 					</ЗначенияСвойства>
 					<ЗначенияСвойства>
 						<Ид>1</Ид>

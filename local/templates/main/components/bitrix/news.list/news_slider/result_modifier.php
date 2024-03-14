@@ -9,18 +9,27 @@ foreach ($arResult['ITEMS'] as $key => $arItem) {
 }
 
 
-$rsSections = CIBlockSection::GetList(array(), array('IBLOCK_ID' => $arParams['IBLOCK_ID']),array(), array('NAME', 'CODE'));
+$rsSections = CIBlockSection::GetList(
+    [],
+    ['IBLOCK_ID' => $arParams['IBLOCK_ID']],
+    ['NAME', 'CODE', 'SECTION_PAGE_URL', 'ID']
+);
 
 while ($sectionList = $rsSections->GetNext()){
-    $arResult['SECTION'][] = $sectionList;
+    $arResult['SECTION'][$sectionList['ID']] = $sectionList;
+
 }
 
-//
+foreach ($arResult['ITEMS'] as $index => $arItem) {
+    $dateCreate = CIBlockFormatProperties::DateFormat('j F Y', MakeTimeStamp($arItem["DATE_CREATE"], CSite::GetDateFormat()));
+    $arResult['ITEMS'][$index]['DATE_CREATE'] = $dateCreate;
+}
+
 //echo '<pre>';
 //
-//print_r($arResult['SECTION'][0]['CODE']);
+//print_r($arResult['ITEMS']);
 //echo '</pre>';
-//
+
 
 
 
