@@ -41,7 +41,6 @@ foreach ($arResult as $key => $arItem) {
 $strReturn .= '</div>
     </div>
 </div>';
-print_r($arResult) ;
-die();
+
 return $strReturn; ?>
 

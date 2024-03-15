@@ -1,6 +1,14 @@
 <?php if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {die();} ?>
 
 
+<?php
+
+//echo '<pre>';
+//var_dump($_REQUEST);
+//echo '</pre>';
+
+?>
+
 <? if (!empty($_REQUEST['CODE'])):?>
 
     <?$APPLICATION->IncludeComponent("bitrix:news.detail", "news_details", Array(
@@ -66,7 +74,8 @@
             <div class="breadcrumbs">
                 <div class="breadcrumbs-wrapper">
                     <div class="breadcrumbs-wrapper__row">
-                        <? $APPLICATION->IncludeComponent(
+                        <?php
+                            $APPLICATION->IncludeComponent(
                                 "bitrix:breadcrumb",
                                 "navigation_news",
                                  array(
@@ -112,6 +121,7 @@
             </div>
 
             <?
+
             global $arrFilter;
             if ($_REQUEST['SECTION_CODE']) {
                 $arrFilter = [
@@ -123,7 +133,7 @@
                 "news",
                 array(
                     "ACTIVE_DATE_FORMAT" => "d.m.Y",
-                    "ADD_SECTIONS_CHAIN" => "Y",
+                    "ADD_SECTIONS_CHAIN" => $arParams["ADD_SECTIONS_CHAIN"],
                     "AJAX_MODE" => "N",
                     "AJAX_OPTION_ADDITIONAL" => "",
                     "AJAX_OPTION_HISTORY" => "N",
