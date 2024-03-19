@@ -25,14 +25,12 @@ while ($sectionList = $rsSections->GetNext()){
 
 
 
-
 foreach ($arResult['ITEMS'] as $index => $arItem) {
     $dateCreate = CIBlockFormatProperties::DateFormat('j F Y', MakeTimeStamp($arItem["DATE_CREATE"], CSite::GetDateFormat()));
     $arResult['ITEMS'][$index]['DATE_CREATE'] = $dateCreate;
 }
 
-//echo '<pre>';
-//print_r($arResult);
-//
-//'</pre>';
+echo '<pre>';
+print_r($arResult['SECTION']);
+'</pre>';
 

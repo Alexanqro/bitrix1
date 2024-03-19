@@ -27,6 +27,7 @@ $this->setFrameMode(true);
         <a class="news-content__categories-item <?if($_REQUEST['SECTION_CODE'] == $arSection['CODE']):?>active<? endif;?> btn-hover_parent no-scale" href="<?= $arSection['SECTION_PAGE_URL']?>">
             <div class="btn-hover_circle white"></div><span><?= $arSection['NAME']?></span>
         </a>
+
         <?endforeach;?>
     </div>
 </div>
@@ -52,6 +53,7 @@ $this->setFrameMode(true);
                 <div class="news-card__title"><?= $arItem['PREVIEW_TEXT']?></div>
             </div>
         </a>
+
     <?endforeach;?>
 </div>
 

@@ -36,10 +36,7 @@ while ($sectionList = $rsSections->GetNext()) {
 
 }
 
-//echo '<pre>';
-//print_r($arResult['SECTION']);
-//echo '</pre>';
-//die();
+
 if ($arResult['SECTION']['PATH'][1]){
     $arResult['CURRENT_SECTION'] = $arResult['SECTION']['PATH'][1]['CODE'];
 }
@@ -49,39 +46,4 @@ if ($arResult['SECTION']['PATH'][1]){
 //echo '</pre>';
 //die();
 
-
-
-//$sectionsId = [];
-//
-//$rsSections = CIBlockSection::GetList(
-//    [
-//        "ID" => "asc"
-//    ],
-//    [
-//        "SECTION_ID" => $arResult['SECTION']['PATH'][0]["ID"],
-//        "ACTIVE" => 'Y',
-//        "IBLOCK_ID" => $arParams["IBLOCK_ID"],
-//    ],
-//    [
-//        false
-//    ],
-//    [
-//        "NAME",
-//        "SECTION_PAGE_URL",
-//        "CODE",
-//    ]
-//);
-//
-//while ($res = $rsSections->GetNext()) {
-//    $arResult["SUB_SECTIONS"][]= $res;
-//}
-//
-//if ($arResult['SECTION']['PATH'][1]) {
-//    $arResult['CURRENT_SECTION'] = $arResult['SECTION']['PATH'][1]['CODE'];
-//}
-//
-//echo '<pre>';
-//print_r($arResult['SUB_SECTIONS']);
-//echo '</pre>';
-//die();
 
