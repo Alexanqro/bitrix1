@@ -23,7 +23,7 @@ $this->setFrameMode(true);
         <a class="news-content__categories-item <?if(!isset($_REQUEST['SECTION_CODE'])):?>active<? endif;?> btn-hover_parent no-scale" href="/news/">
             <div class="btn-hover_circle white"></div><span>все</span>
         </a>
-        <? foreach ($arResult['SECTION'] as $key => $arSection): ?>
+        <? foreach ($arResult['SECTIONS'] as $key => $arSection): ?>
         <a class="news-content__categories-item <?if($_REQUEST['SECTION_CODE'] == $arSection['CODE']):?>active<? endif;?> btn-hover_parent no-scale" href="<?= $arSection['SECTION_PAGE_URL']?>">
             <div class="btn-hover_circle white"></div><span><?= $arSection['NAME']?></span>
         </a>
@@ -40,7 +40,7 @@ $this->setFrameMode(true);
         ?>
         <a class="news-card" href="<?= $arItem['DETAIL_PAGE_URL']?>" id="<?= $this->GetEditAreaId($arItem['ID']); ?>">
             <div class="news-card__top">
-                <div class="news-card__plug"><?= $arResult['SECTION'][$arItem['IBLOCK_SECTION_ID']]['NAME']  ?></div>
+                <div class="news-card__plug"><?= $arResult['SECTIONS'][$arItem['IBLOCK_SECTION_ID']]['NAME']  ?></div>
                 <div class="news-card__bg">
                     <picture class="picture">
                         <source type="<?= $arItem['PREVIEW_PICTURE']['SRC']?>">

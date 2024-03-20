@@ -16,11 +16,8 @@ $rsSections = CIBlockSection::GetList(
 
 
 while ($sectionList = $rsSections->GetNext()){
-    $arResult['SECTION'][$sectionList['ID']] = $sectionList;
-//    echo '<pre>';
-//    print_r($sectionList);
-//    '</pre>';
-//    die();
+    $arResult['SECTIONS'][$sectionList['ID']] = $sectionList;
+
 }
 
 
@@ -29,8 +26,8 @@ foreach ($arResult['ITEMS'] as $index => $arItem) {
     $dateCreate = CIBlockFormatProperties::DateFormat('j F Y', MakeTimeStamp($arItem["DATE_CREATE"], CSite::GetDateFormat()));
     $arResult['ITEMS'][$index]['DATE_CREATE'] = $dateCreate;
 }
-
-echo '<pre>';
-print_r($arResult['SECTION']);
-'</pre>';
+//
+//echo '<pre>';
+//print_r($arResult['SECTION']);
+//'</pre>';
 

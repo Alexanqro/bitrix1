@@ -11,7 +11,7 @@ $arResult['DATE_CREATE'] = $dateCreate;
 
 
 $db_list = CIBlockSection::GetList(
-    [],
+    ['SORT' => 'ASC'],
     ['ID' => $arResult['IBLOCK_SECTION_ID']],
     true);
 
@@ -21,3 +21,7 @@ if ($ar_result = $db_list->GetNext()) {
     $arResult['SECTION_NAME'] = 'Пусто';
 }
 
+//echo '<pre>';
+//print_r($arResult['PREVIEW_PICTURE']);
+//
+//echo '</pre>';

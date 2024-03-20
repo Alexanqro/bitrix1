@@ -27,7 +27,7 @@
                 <span class="main-news__card-plug"><?= $arResult['SECTION'][$arItem['IBLOCK_SECTION_ID']]['NAME']?></span>
             </div>
             <p class="main-news__card-date"><?=$arItem['DATE_CREATE']?></p>
-            <p class="main-news__card-title"><?=$arItem['PREVIEW_TEXT']?></p>
+            <p class="main-news__card-title"><?=$arItem['NAME']?></p>
 
         </a>
 

@@ -11,6 +11,26 @@
 
 <? if (!empty($_REQUEST['CODE'])):?>
 
+<section class="top-section">
+    <section class="news-content container">
+        <div class="breadcrumbs">
+            <div class="breadcrumbs-wrapper">
+                <div class="breadcrumbs-wrapper__row">
+                    <?php
+                    $APPLICATION->IncludeComponent(
+                        "bitrix:breadcrumb",
+                        "navigation_news",
+                        array(
+                            "PATH" => "",
+                            "SITE_ID" => "s1",
+                            "START_FROM" => "0"
+                        )
+                    ); ?>
+
+                </div>
+            </div>
+        </div>
+
     <?$APPLICATION->IncludeComponent("bitrix:news.detail", "news_details", Array(
         "ACTIVE_DATE_FORMAT" => "d.m.Y",	// Формат показа даты
         "ADD_ELEMENT_CHAIN" => "N",	// Включать название элемента в цепочку навигации

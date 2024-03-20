@@ -20,11 +20,11 @@ $this->setFrameMode(true);
                 <div class="swiper gallery-thumbs-catalog">
 
                     <div class="swiper-wrapper">
-                        <? foreach($arResult['PROPERTIES'] as $arItem):?>
+                        <? foreach ($arResult['PROPERTIES']['GALERY']['VALUE'] as $key => $arItem):?>
                         <div class="swiper-slide">
                             <div class="catalog-detail__thumb-img">
                                 <picture class="picture">
-                                    <source type="image/webp" srcset="<?=$arItem['GALERY']['FILE_VALUE']['SRC']?>"><img class="picture__img" src="<?=$arItem['GALERY']['FILE_VALUE']['SRC']?>">
+                                    <source type="image/webp" srcset="<?=$arItem['src']?>"><img class="picture__img" src="<?=$arItem['src']?>">
                                 </picture>
                             </div>
                         </div>
@@ -75,27 +75,15 @@ $this->setFrameMode(true);
                 </div>
                 <div class="swiper swiper-gallery-catalog">
                     <div class="swiper-wrapper">
+                        <? foreach ($arResult['PROPERTIES']['GALERY']['VALUE'] as $key => $arItem):?>
                         <div class="swiper-slide">
                             <div class="catalog-detail__img">
                                 <picture class="picture">
-                                    <source type="image/webp" srcset="<?=$arResult['PREVIEW_PICTURE']['SRC']?>"><img class="picture__img" src="<?=$arResult['PREVIEW_PICTURE']['SRC']?>">
+                                    <source type="image/webp" srcset="<?=$arItem['src']?>"><img class="picture__img" src="<?=$arItem['src']?>">
                                 </picture>
                             </div>
                         </div>
-                        <div class="swiper-slide">
-                            <div class="catalog-detail__img">
-                                <picture class="picture">
-                                    <source type="image/webp" srcset="<?=$arResult['PREVIEW_PICTURE']['SRC']?>"><img class="picture__img" src="<?=$arResult['PREVIEW_PICTURE']['SRC']?>">
-                                </picture>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="catalog-detail__img">
-                                <picture class="picture">
-                                    <source type="image/webp" srcset="<?=$arResult['PREVIEW_PICTURE']['SRC']?>"><img class="picture__img" src="<?=$arResult['PREVIEW_PICTURE']['SRC']?>">
-                                </picture>
-                            </div>
-                        </div>
+                        <? endforeach;?>
                     </div>
                 </div>
             </div>
@@ -113,7 +101,7 @@ $this->setFrameMode(true);
                     "START_FROM" => "0"
                 )
             ); ?>
-        </div><span class="catalog-detail__brandmark">Здоровые Продукты</span>
+        </div><span class="catalog-detail__brandmark"><?=$arResult['PROPERTIES']['BRANDS']['NAME']?></span>
         <div class="catalog-detail__title"><?=$arResult['PREVIEW_PICTURE']['TITLE']?></div>
         <div class="catalog-detail__desk"><?=$arResult['PREVIEW_TEXT']?></div>
         <div class="catalog-detail__thumbs" data-aos="fade-up">
@@ -316,7 +304,7 @@ $this->setFrameMode(true);
                     </div>
                 </form>
             </div>
-        </div><a class="catalog-detail__rect btn-hover_parent" href="#">
+        </div><a class="catalog-detail__rect btn-hover_parent" href="<?=$arResult['PROPERTIES']['NEXT_PRODUCT']['DETAIL_PAGE_URL']?>">
             <div class="catalog-detail__rect-circle">
                 <div class="catalog-hero__rec-circle">
                     <div class="button button-arrow_right btn-hover_parent">
@@ -332,12 +320,12 @@ $this->setFrameMode(true);
             <div class="catalog-detail__rect-inner">
                 <div class="catalog-detail__rect-texts">
                     <div class="catalog-detail__rect-title">следующий продукт</div>
-                    <div class="catalog-detail__rect-desk">Сёмыч</div>
+                    <div class="catalog-detail__rect-desk"><?=$arResult['PROPERTIES']['NEXT_PRODUCT']['NAME']?></div>
                 </div>
                 <div class="catalog-detail__rect-box">
                     <div class="catalog-detail__rect-img">
                         <picture class="picture">
-                            <source type="image/webp" srcset="assets/images/catalog-detail-next1.webp"><img class="picture__img" src="assets/images/catalog-detail-next1.png">
+                            <source type="image/webp" srcset="<?=$arResult['PROPERTIES']['NEXT_PRODUCT']['PREVIEW_PICTURE']?>"><img class="picture__img" src="<?=$arResult['PROPERTIES']['NEXT_PRODUCT']['PREVIEW_PICTURE']?>">
                         </picture>
                     </div>
                 </div>
