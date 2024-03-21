@@ -1,10 +1,5 @@
 <?php
 
-//echo '<pre>';
-//print_r($arResult['ITEMS']);
-//echo '</pre>';
-//die();
-
 foreach ($arResult['ITEMS'] as $key => $arItem) {
     $resize = CFile::ResizeImageGet($arItem['PREVIEW_PICTURE'], ["width" => 1200, "height" => 800],
         BX_RESIZE_IMAGE_EXACT,
@@ -41,9 +36,24 @@ if ($arResult['SECTION']['PATH'][1]){
     $arResult['CURRENT_SECTION'] = $arResult['SECTION']['PATH'][1]['CODE'];
 }
 
+$dbList = CIBlockElement::GetList(
+    ["SORT"=>"ASC"],
+    [
+        'IBLOCK_ID' => $arParams['IBLOCK_ID'],
+        'ID' => $arResult["PROPERTIES"]
+    ],
+    false,
+    false
+
+);
+
+while($ar_fields = $dbList->GetNext()){
+    $arResult['STORAGE1'] = $ar_fields;
+}
+
 //echo '<pre>';
-//print_r($arResult['SECTIONS']);
+//print_r($_GET);
 //echo '</pre>';
-//die();
+
 
 

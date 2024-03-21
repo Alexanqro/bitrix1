@@ -31,13 +31,31 @@
     </div>
 </div>
 </section>
+
+<?
+
+$arFilter = [];
+
+
+
+
+echo '<pre>';
+var_dump($urlArr[2]);
+echo '</pre>';
+
+echo '<pre>';
+var_dump($getData['test']);
+echo '</pre>';
+
+?>
+
     <?php
     $APPLICATION->IncludeComponent(
 	"bitrix:news.list", 
 	"catalog_elements", 
 	array(
 		"ACTIVE_DATE_FORMAT" => "d.m.Y",
-		"ADD_SECTIONS_CHAIN" => "N",
+		"ADD_SECTIONS_CHAIN" => "Y",
 		"AJAX_MODE" => "N",
 		"AJAX_OPTION_ADDITIONAL" => "",
 		"AJAX_OPTION_HISTORY" => "N",
@@ -61,11 +79,11 @@
 			2 => "PREVIEW_PICTURE",
 			3 => "",
 		),
-		"FILTER_NAME" => "arrFilter",
+		"FILTER_NAME" => 'arrFilter',
 		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
 		"IBLOCK_ID" => "2",
 		"IBLOCK_TYPE" => "Slaider",
-		"INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
+		"INCLUDE_IBLOCK_INTO_CHAIN" => "N",
 		"INCLUDE_SUBSECTIONS" => "Y",
 		"MESSAGE_404" => "",
 		"NEWS_COUNT" => "20",
@@ -77,11 +95,15 @@
 		"PAGER_TEMPLATE" => ".default",
 		"PAGER_TITLE" => "Новости",
 		"PARENT_SECTION" => "",
-		"PARENT_SECTION_CODE" => $_REQUEST['SECTION_CODE'],
+		"PARENT_SECTION_CODE" => $urlArr[2],
 		"PREVIEW_TRUNCATE_LEN" => "",
 		"PROPERTY_CODE" => array(
-			0 => "",
-			1 => "",
+			0 => "NEW_TOP",
+			1 => "NUTRITIONAL_VALUE",
+			2 => "COMPAUND",
+			3 => "STORAGE_CONDITION",
+			4 => "PACKAGING",
+			5 => "",
 		),
 		"SET_BROWSER_TITLE" => "Y",
 		"SET_LAST_MODIFIED" => "N",

@@ -52,6 +52,7 @@
 		"PROPERTY_CODE" => array(
 			0 => "LOGO",
 			1 => "",
+			2 => "",
 		),
 		"SET_BROWSER_TITLE" => "Y",
 		"SET_LAST_MODIFIED" => "N",

@@ -1,14 +1,5 @@
 <?php if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {die();} ?>
 
-
-<?php
-
-//echo '<pre>';
-//var_dump($_REQUEST);
-//echo '</pre>';
-
-?>
-
 <? if (!empty($_REQUEST['CODE'])):?>
 
 <section class="top-section">
@@ -141,7 +132,7 @@
             </div>
 
             <?
-
+//
             global $arrFilter;
             if ($_REQUEST['SECTION_CODE']) {
                 $arrFilter = [
