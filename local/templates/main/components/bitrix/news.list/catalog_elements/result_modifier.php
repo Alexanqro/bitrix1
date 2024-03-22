@@ -36,24 +36,67 @@ if ($arResult['SECTION']['PATH'][1]){
     $arResult['CURRENT_SECTION'] = $arResult['SECTION']['PATH'][1]['CODE'];
 }
 
-$dbList = CIBlockElement::GetList(
-    ["SORT"=>"ASC"],
+
+$dbListFat = CIBlockElement::GetList(
+    ["PROPERTY_FAT_CONTENT_VALUE"=>"ASC"],
     [
         'IBLOCK_ID' => $arParams['IBLOCK_ID'],
-        'ID' => $arResult["PROPERTIES"]
+        'PROPERTY_FAT_CONTENT_VALUE' => 'FAT_CONTENT',
     ],
-    false,
+    ['PROPERTY_FAT_CONTENT'],
     false
 
 );
 
-while($ar_fields = $dbList->GetNext()){
-    $arResult['STORAGE1'] = $ar_fields;
+while($ar_fields = $dbListFat->Fetch()){
+    $arResult['FAT_CONTENT'][] = $ar_fields;
 }
 
-//echo '<pre>';
-//print_r($_GET);
-//echo '</pre>';
+$dbListTop = CIBlockElement::GetList(
+    ['SORT' => 'ASC'],
+    [
+        'IBLOCK_ID' => $arParams['IBLOCK_ID'],
+        'PROPERTY_NEW_TOP_VALUE' => 'TOP'
+
+    ],
+    ['PROPERTY_NEW_TOP']
+);
+
+while($ar_fields1 = $dbListTop->GetNext()){
+    $arResult['NEW_TOP'] = $ar_fields1;
+}
+
+$dbListBrands = CIBlockElement::GetList(
+    ['SORT' => 'ASC'],
+    [
+        'IBLOCK_ID' => $arParams['IBLOCK_ID'],
+        'PROPERTY_BRANDS_VALUE' => 'BRANDS'
+
+    ],
+    ['PROPERTY_BRANDS']
+);
+
+while($ar_fields2 = $dbListBrands->GetNext()) {
+    $arResult['BRANDS'][] = $ar_fields2;
+}
+
+$dbListBrands = CIBlockElement::GetList(
+    ['SORT' => 'ASC'],
+    [
+        'IBLOCK_ID' => $arParams['IBLOCK_ID'],
+        'PROPERTY_BRANDS_VALUE' => 'BRANDS'
+
+    ],
+    ['PROPERTY_BRANDS']
+);
+
+while($ar_fields2 = $dbListBrands->GetNext()) {
+    $arResult['BRANDS'][] = $ar_fields2;
+}
+echo '<pre>';
+print_r($arResult);
+echo '</pre>';
+
 
 
 

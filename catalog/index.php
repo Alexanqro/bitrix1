@@ -19,10 +19,9 @@ $urlFiltr = array_filter($urlExplode, function($elem) {
 });
 
 
-echo '<pre>';
-var_dump($getData
-);
-echo '</pre>';
+//echo '<pre>';
+//var_dump($getData);
+//echo '</pre>';
 
 $secCode = $urlArr[2];
 $elemCode = $urlArr[3];

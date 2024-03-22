@@ -6,10 +6,14 @@ $APPLICATION->ShowHead();
 	 <?php $APPLICATION->ShowPanel();?>
 
 <?
-     echo '<pre>';
-var_dump($request);
-     echo '</pre>';
 
+     $arFilter = [
+             'ID' => $_GET
+     ];
+
+echo '<pre>';
+print_r($arFilter);
+echo '</pre>';
 
 
 ?>

@@ -34,18 +34,16 @@
 
 <?
 
-$arFilter = [];
-
-
-
-
+global $arFilter;
+$arFilter = [
+    'PROPERTY_FAT_CONTENT' => $_GET['fat'],
+    'PROPERTY_NEW_TOP_VALUE' => $_GET['top']
+];
 echo '<pre>';
-var_dump($urlArr[2]);
+print_r($arFilter);
 echo '</pre>';
 
-echo '<pre>';
-var_dump($getData['test']);
-echo '</pre>';
+
 
 ?>
 
@@ -79,7 +77,7 @@ echo '</pre>';
 			2 => "PREVIEW_PICTURE",
 			3 => "",
 		),
-		"FILTER_NAME" => 'arrFilter',
+		"FILTER_NAME" => 'arFilter',
 		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
 		"IBLOCK_ID" => "2",
 		"IBLOCK_TYPE" => "Slaider",
@@ -103,7 +101,8 @@ echo '</pre>';
 			2 => "COMPAUND",
 			3 => "STORAGE_CONDITION",
 			4 => "PACKAGING",
-			5 => "",
+			5 => "FAT_CONTENT",
+            6 => ''
 		),
 		"SET_BROWSER_TITLE" => "Y",
 		"SET_LAST_MODIFIED" => "N",
