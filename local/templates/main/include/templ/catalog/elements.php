@@ -33,6 +33,13 @@
 </section>
 
 <?
+use Bitrix\Main\Application;
+use Bitrix\Main\Web\Cookie;
+
+
+
+
+
 
 global $arFilter;
 $arFilter = [
@@ -42,15 +49,20 @@ $arFilter = [
 ];
 
 $sortBy1 = 'ACTIVE_FROM';
+
 if (isset($_GET['Sort']) && $_GET['Sort'] == 'Сначала популярные'){
     $sortBy1 = 'SHOW_COUNTER';
+    $cookie = new Cookie($sortBy1, 42);
+    Application::getInstance()->getContext()->getResponse()->addCookie($cookie);
 }
 if (isset($_GET['Sort']) && $_GET['Sort'] == 'Сначала новинки'){
     $sortBy1 = 'CREATED';
+    $cookie = new Cookie($sortBy1, 43);
+    Application::getInstance()->getContext()->getResponse()->addCookie($cookie);
 }
-//echo '<pre>';
-//print_r($arFilter);
-//echo '</pre>';
+echo '<pre>';
+print_r($cookie);
+echo '</pre>';
 
 
 

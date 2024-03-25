@@ -34,14 +34,23 @@ $this->setFrameMode(true);
 <form method="get">
     <div class="catalog-hero__activity" data-aos="fade-up">
         <label class="catalog-hero__tops desktop" for="top">
-            <input class="catalog-hero__tops-input catalog-check-desktop" type="checkbox" name="top" value="<?=$arResult['NEW_TOP']['PROPERTY_NEW_TOP_VALUE']?>">
+            <? if (isset($_GET["top"])):?>
+            <input class="catalog-hero__tops-input catalog-check-desktop" type="checkbox" checked name="top" value="<?=$arResult['NEW_TOP']['PROPERTY_NEW_TOP_VALUE']?>">
             <div class="catalog-hero__tops-box">
                 <svg class="mark-svg" xmlns="http://www.w3.org/2000/svg" width="14" height="10" viewbox="0 0 14 10"
                      fill="none">
-                    <path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round"
-                          stroke-linejoin="round"></path>
+                    <path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                 </svg>
             </div>
+            <? else:?>
+            <input class="catalog-hero__tops-input catalog-check-desktop" type="checkbox"  name="top" value="<?=$arResult['NEW_TOP']['PROPERTY_NEW_TOP_VALUE']?>">
+            <div class="catalog-hero__tops-box">
+                <svg class="mark-svg" xmlns="http://www.w3.org/2000/svg" width="14" height="10" viewbox="0 0 14 10"
+                     fill="none">
+                    <path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+            </div>
+            <? endif;?>
             <div class="catalog-hero__tops-logo">
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewbox="0 0 40 40" fill="none">
                     <path fill-rule="evenodd" clip-rule="evenodd"
@@ -61,23 +70,39 @@ $this->setFrameMode(true);
             <div class="catalog-hero__select desktop">
                 <div class="select-wrapper">
                     <div class="select">
-                        <select class="select__select" style="width: 100%" data-select-placeholder="Брэнды" name="brands">
+                        <? if (isset($_GET["brands"])):?>
+                        <select class="select__select" style="width: 100%" data-select-placeholder="<?=$arResult['BRANDS_VALUES1']?>" name="brands">
                             <option value="" selected="selected" disabled="disabled"></option>
                             <? foreach ($arResult['BRANDS_VALUES'] as $key=>$arItem): ?>
-                            <option value="<?=$arItem['ID'] ?>"><?=$arItem['SEARCHABLE_CONTENT'] ?></option>
+                                <option value="<?=$arItem['ID'] ?>"><?=$arItem['NAME'] ?></option>
                             <? endforeach; ?>
-
-                        </select></div>
+                            <? else:?>
+                            <select class="select__select" style="width: 100%" data-select-placeholder="Брэнды" name="brands">
+                            <option value="" selected="selected" disabled="disabled"></option>
+                            <? foreach ($arResult['BRANDS_VALUES'] as $key=>$arItem): ?>
+                            <option value="<?=$arItem['ID']?>"><?=$arItem['NAME'] ?></option>
+                            <? endforeach; ?>
+                            <?php endif;?>
+                        </select>
+                    </div>
                 </div>
             </div>
             <div class="catalog-hero__select desktop">
                 <div class="select-wrapper">
                     <div class="select">
-                        <select class="select__select" style="width: 100%" data-select-placeholder="жирность" name="fat">
-                            <option value="<?=$arItem['PROPERTY_FAT_CONTENT_VALUE'] ?>" selected="selected" disabled="disabled"></option>
+                        <? if (isset($_GET["fat"])):?>
+                        <select class="select__select" style="width: 100%" data-select-placeholder="<?=$_GET['fat']?>" name="fat">
+                            <option value="" selected="selected" disabled="disabled"></option>
                             <? foreach ($arResult['FAT_CONTENT'] as $arItem): ?>
                                 <option value="<?=$arItem['PROPERTY_FAT_CONTENT_VALUE'] ?>"><?=$arItem['PROPERTY_FAT_CONTENT_VALUE'] ?></option>
                             <? endforeach; ?>
+                            <? else:?>
+                            <select class="select__select" style="width: 100%" data-select-placeholder="Жирность" name="fat">
+                                <option value="" selected="selected" disabled="disabled"></option>
+                                <? foreach ($arResult['FAT_CONTENT'] as $arItem): ?>
+                                    <option value="<?=$arItem['PROPERTY_FAT_CONTENT_VALUE'] ?>"><?=$arItem['PROPERTY_FAT_CONTENT_VALUE'] ?></option>
+                                <? endforeach; ?>
+                                <?endif;?>
                         </select>
                     </div>
                 </div>
@@ -97,11 +122,20 @@ $this->setFrameMode(true);
             <div class="catalog-hero__select">
                 <div class="select-wrapper">
                     <div class="select cstm-arrows">
-                        <select class="select__select" style="width: 100%" data-select-placeholder="Сначала новинки" name="Sort">
+                        <? if (isset($_GET["Sort"])):?>
+                        <select class="select__select" style="width: 100%" data-select-placeholder="<?=$_GET['Sort']?>" name="Sort">
                             <option value="" selected="selected" disabled="disabled"></option>
                             <option value="Сначала новинки">Сначала новинки</option>
                             <option value="Сначала популярные">Сначала популярные</option>
-                        </select></div>
+                        </select>
+                        <? else:?>
+                            <select class="select__select" style="width: 100%" data-select-placeholder="Сортировка" name="Sort">
+                                <option value="" selected="selected" disabled="disabled"></option>
+                                <option value="Сначала новинки">Сначала новинки</option>
+                                <option value="Сначала популярные">Сначала популярные</option>
+                            </select>
+                        <? endif;?>
+                    </div>
                 </div>
             </div>
             <div class="catalog-hero__select"></div>

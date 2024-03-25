@@ -99,5 +99,20 @@ while($ar_fields1 = $db_brands->GetNext()){
 //echo '</pre>';
 //
 
+$db_brands1 = CIBlockElement::GetList(
+    false,
+    [
+        'IBLOCK_ID' => 4,
+        "ID" => $_GET["brands"]
+    ]
+    );
+if($ar_fields12 = $db_brands1->GetNext()){
+    $arResult['BRANDS_VALUES1'] = $ar_fields12["NAME"];
+
+}
+
+echo '<pre>';
+print_r($arResult['FAT_CONTENT']);
+echo '</pre>';
 
 
