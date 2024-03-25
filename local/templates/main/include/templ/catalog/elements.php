@@ -37,11 +37,20 @@
 global $arFilter;
 $arFilter = [
     'PROPERTY_FAT_CONTENT' => $_GET['fat'],
-    'PROPERTY_NEW_TOP_VALUE' => $_GET['top']
+    'PROPERTY_NEW_TOP_VALUE' => $_GET['top'],
+    'PROPERTY_BRANDS' => $_GET['brands']
 ];
-echo '<pre>';
-print_r($arFilter);
-echo '</pre>';
+
+$sortBy1 = 'ACTIVE_FROM';
+if (isset($_GET['Sort']) && $_GET['Sort'] == 'Сначала популярные'){
+    $sortBy1 = 'SHOW_COUNTER';
+}
+if (isset($_GET['Sort']) && $_GET['Sort'] == 'Сначала новинки'){
+    $sortBy1 = 'CREATED';
+}
+//echo '<pre>';
+//print_r($arFilter);
+//echo '</pre>';
 
 
 
@@ -111,7 +120,7 @@ echo '</pre>';
 		"SET_STATUS_404" => "N",
 		"SET_TITLE" => "Y",
 		"SHOW_404" => "N",
-		"SORT_BY1" => "ACTIVE_FROM",
+		"SORT_BY1" => $sortBy1,
 		"SORT_BY2" => "SORT",
 		"SORT_ORDER1" => "DESC",
 		"SORT_ORDER2" => "ASC",

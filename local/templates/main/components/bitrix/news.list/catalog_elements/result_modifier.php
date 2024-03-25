@@ -80,23 +80,24 @@ while($ar_fields2 = $dbListBrands->GetNext()) {
     $arResult['BRANDS'][] = $ar_fields2;
 }
 
-$dbListBrands = CIBlockElement::GetList(
-    ['SORT' => 'ASC'],
+$db_brands = CIBlockElement::GetList(
+    ["SORT"=>"ASC"],
     [
-        'IBLOCK_ID' => $arParams['IBLOCK_ID'],
-        'PROPERTY_BRANDS_VALUE' => 'BRANDS'
-
+        'IBLOCK_ID' => 4,
+        'ID' => $arResult["PROPERTIES"]['BRANDS']
     ],
-    ['PROPERTY_BRANDS']
+    false,
+    false
+
 );
 
-while($ar_fields2 = $dbListBrands->GetNext()) {
-    $arResult['BRANDS'][] = $ar_fields2;
+while($ar_fields1 = $db_brands->GetNext()){
+    $arResult['BRANDS_VALUES'][] = $ar_fields1;
 }
-echo '<pre>';
-print_r($arResult);
-echo '</pre>';
-
+//echo '<pre>';
+//print_r($arResult['BRANDS_VALUES']);
+//echo '</pre>';
+//
 
 
 

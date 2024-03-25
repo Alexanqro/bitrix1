@@ -61,10 +61,12 @@ $this->setFrameMode(true);
             <div class="catalog-hero__select desktop">
                 <div class="select-wrapper">
                     <div class="select">
-                        <select class="select__select" style="width: 100%" data-select-placeholder="Бренд">
+                        <select class="select__select" style="width: 100%" data-select-placeholder="Брэнды" name="brands">
                             <option value="" selected="selected" disabled="disabled"></option>
-                            <option value="Сёмыч">Сёмыч</option>
-                            <option value="Ладушка">Ладушка</option>
+                            <? foreach ($arResult['BRANDS_VALUES'] as $key=>$arItem): ?>
+                            <option value="<?=$arItem['ID'] ?>"><?=$arItem['SEARCHABLE_CONTENT'] ?></option>
+                            <? endforeach; ?>
+
                         </select></div>
                 </div>
             </div>
@@ -72,7 +74,7 @@ $this->setFrameMode(true);
                 <div class="select-wrapper">
                     <div class="select">
                         <select class="select__select" style="width: 100%" data-select-placeholder="жирность" name="fat">
-                            <option value="" selected="selected" disabled="disabled"></option>
+                            <option value="<?=$arItem['PROPERTY_FAT_CONTENT_VALUE'] ?>" selected="selected" disabled="disabled"></option>
                             <? foreach ($arResult['FAT_CONTENT'] as $arItem): ?>
                                 <option value="<?=$arItem['PROPERTY_FAT_CONTENT_VALUE'] ?>"><?=$arItem['PROPERTY_FAT_CONTENT_VALUE'] ?></option>
                             <? endforeach; ?>
@@ -94,8 +96,8 @@ $this->setFrameMode(true);
             </div>
             <div class="catalog-hero__select">
                 <div class="select-wrapper">
-                    <div class="select cstm-arrows"><select class="select__select" style="width: 100%"
-                                                            data-select-placeholder="Сначала новинки">
+                    <div class="select cstm-arrows">
+                        <select class="select__select" style="width: 100%" data-select-placeholder="Сначала новинки" name="Sort">
                             <option value="" selected="selected" disabled="disabled"></option>
                             <option value="Сначала новинки">Сначала новинки</option>
                             <option value="Сначала популярные">Сначала популярные</option>
