@@ -60,9 +60,9 @@ if (isset($_GET['Sort']) && $_GET['Sort'] == 'Сначала новинки'){
     $cookie = new Cookie($sortBy1, 44, false);
     Application::getInstance()->getContext()->getResponse()->addCookie($cookie);
 }
-//echo '<pre>';
-//print_r($arFilter);
-//echo '</pre>';
+echo '<pre>';
+print_r($arFilter);
+echo '</pre>';
 
 
 

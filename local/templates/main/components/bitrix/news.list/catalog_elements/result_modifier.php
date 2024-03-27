@@ -10,7 +10,9 @@ foreach ($arResult['ITEMS'] as $key => $arItem) {
 
 
 $arResult['MAIN_SECTION'] = $arResult['SECTION']['PATH'][0]['ID'];
+$arResult['ACTIVE_SECTION'] = end($arResult['SECTION']['PATH']);
 
+var_dump($arResult['SECTION']['PATH']);
 $arFilter = [
     'IBLOCK_ID'=>$arParams['IBLOCK_ID'],
     'GLOBAL_ACTIVE'=>'Y',
@@ -36,21 +38,29 @@ if ($arResult['SECTION']['PATH'][1]){
     $arResult['CURRENT_SECTION'] = $arResult['SECTION']['PATH'][1]['CODE'];
 }
 
+//echo '<pre>';
+//var_dump($arResult['SECTION']['PATH']);
+//echo '</pre>';
 
 $dbListFat = CIBlockElement::GetList(
-    ["PROPERTY_FAT_CONTENT_VALUE"=>"ASC"],
+    false,
     [
         'IBLOCK_ID' => $arParams['IBLOCK_ID'],
-        'PROPERTY_FAT_CONTENT_VALUE' => 'FAT_CONTENT',
+        '!PROPERTY_FAT_CONTENT' => false,
+        'SUBSECTION' => 'Y',
+        'SECTION_ID'=>$arResult['ACTIVE_SECTION'],
+
     ],
-    ['PROPERTY_FAT_CONTENT'],
-    false
+    ['PROPERTY_FAT_CONTENT']
+
 
 );
 
 while($ar_fields = $dbListFat->Fetch()){
     $arResult['FAT_CONTENT'][] = $ar_fields;
 }
+
+
 
 $dbListTop = CIBlockElement::GetList(
     ['SORT' => 'ASC'],
@@ -66,27 +76,18 @@ while($ar_fields1 = $dbListTop->GetNext()){
     $arResult['NEW_TOP'] = $ar_fields1;
 }
 
-$dbListBrands = CIBlockElement::GetList(
-    ['SORT' => 'ASC'],
-    [
-        'IBLOCK_ID' => $arParams['IBLOCK_ID'],
-        'PROPERTY_BRANDS_VALUE' => 'BRANDS'
 
-    ],
-    ['PROPERTY_BRANDS']
-);
-
-while($ar_fields2 = $dbListBrands->GetNext()) {
-    $arResult['BRANDS'][] = $ar_fields2;
-}
 
 $db_brands = CIBlockElement::GetList(
     ["SORT"=>"ASC"],
     [
-        'IBLOCK_ID' => 4,
-        'ID' => $arResult["PROPERTIES"]['BRANDS']
+        'IBLOCK_ID' => $arParams['IBLOCK_ID'],
+        '!PROPERTY_FAT_CONTENT' => false,
+        'SUBSECTION' => 'Y',
+        'SECTION_ID'=>$arResult['ACTIVE_SECTION'],
+
     ],
-    false,
+    ['PROPERTY_BRANDS'],
     false
 
 );
@@ -110,9 +111,13 @@ if($ar_fields12 = $db_brands1->GetNext()){
     $arResult['BRANDS_VALUES1'] = $ar_fields12["NAME"];
 
 }
-//
-//echo '<pre>';
-//print_r($arResult['FAT_CONTENT']);
-//echo '</pre>';
-//
+
+echo '<pre>';
+print_r($arResult['BRANDS_VALUES']);
+echo '</pre>';
+
+echo '<pre>';
+print_r($arResult['BRANDS_VALUES1']);
+echo '</pre>';
+
 
