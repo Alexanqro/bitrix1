@@ -8,7 +8,7 @@ $APPLICATION->ShowHead();
 <?
 
      $arFilter = [
-             'ID' => $_GET
+             'ID' => 5
      ];
 
 echo '<pre>';

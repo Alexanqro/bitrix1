@@ -52,17 +52,17 @@ $sortBy1 = 'ACTIVE_FROM';
 
 if (isset($_GET['Sort']) && $_GET['Sort'] == 'Сначала популярные'){
     $sortBy1 = 'SHOW_COUNTER';
-    $cookie = new Cookie($sortBy1, 42);
+    $cookie = new Cookie($sortBy1, 48, false);
     Application::getInstance()->getContext()->getResponse()->addCookie($cookie);
 }
 if (isset($_GET['Sort']) && $_GET['Sort'] == 'Сначала новинки'){
     $sortBy1 = 'CREATED';
-    $cookie = new Cookie($sortBy1, 43);
+    $cookie = new Cookie($sortBy1, 44, false);
     Application::getInstance()->getContext()->getResponse()->addCookie($cookie);
 }
-echo '<pre>';
-print_r($cookie);
-echo '</pre>';
+//echo '<pre>';
+//print_r($arFilter);
+//echo '</pre>';
 
 
 

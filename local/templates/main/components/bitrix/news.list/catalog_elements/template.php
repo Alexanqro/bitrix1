@@ -20,37 +20,26 @@ $this->setFrameMode(true);
         <div class="btn-hover_circle"></div>
         <span>Все</span>
     </a>
-    <?php foreach ($arResult['SECTIONS'] as $key => $item): ?>
-        <a class="catalog-hero__thumbs-item btn-hover_parent <?php if ($arResult['CURRENT_SECTION'] == $item['CODE']) : ?> active<?php endif; ?>"
+    <? foreach ($arResult['SECTIONS'] as $key => $item): ?>
+        <a class="catalog-hero__thumbs-item btn-hover_parent <? if ($arResult['CURRENT_SECTION'] == $item['CODE']) : ?> active<? endif; ?>"
            href="<?= $item["SECTION_PAGE_URL"]; ?>">
             <div class="btn-hover_circle"></div>
             <span>
             <?= $item["NAME"]; ?>
         </span>
         </a>
-    <?php endforeach; ?>
+    <? endforeach; ?>
 </div>
 
-<form method="get">
-    <div class="catalog-hero__activity" data-aos="fade-up">
-        <label class="catalog-hero__tops desktop" for="top">
-            <? if (isset($_GET["top"])):?>
-            <input class="catalog-hero__tops-input catalog-check-desktop" type="checkbox" checked name="top" value="<?=$arResult['NEW_TOP']['PROPERTY_NEW_TOP_VALUE']?>">
+    <form class="catalog-hero__activity" data-aos="fade-up">
+        <label js_top_checklabel_desc class="catalog-hero__tops desktop" for="top">
+            <input class="catalog-hero__tops-input catalog-check-desktop" type="checkbox" <? if (isset($_GET["top"])):?>checked<?endif;?> name="top" value="">
             <div class="catalog-hero__tops-box">
                 <svg class="mark-svg" xmlns="http://www.w3.org/2000/svg" width="14" height="10" viewbox="0 0 14 10"
                      fill="none">
                     <path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                 </svg>
             </div>
-            <? else:?>
-            <input class="catalog-hero__tops-input catalog-check-desktop" type="checkbox"  name="top" value="<?=$arResult['NEW_TOP']['PROPERTY_NEW_TOP_VALUE']?>">
-            <div class="catalog-hero__tops-box">
-                <svg class="mark-svg" xmlns="http://www.w3.org/2000/svg" width="14" height="10" viewbox="0 0 14 10"
-                     fill="none">
-                    <path d="M1 5L5 9L13 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                </svg>
-            </div>
-            <? endif;?>
             <div class="catalog-hero__tops-logo">
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewbox="0 0 40 40" fill="none">
                     <path fill-rule="evenodd" clip-rule="evenodd"
@@ -70,19 +59,13 @@ $this->setFrameMode(true);
             <div class="catalog-hero__select desktop">
                 <div class="select-wrapper">
                     <div class="select">
-                        <? if (isset($_GET["brands"])):?>
-                        <select class="select__select" style="width: 100%" data-select-placeholder="<?=$arResult['BRANDS_VALUES1']?>" name="brands">
+
+						<select class="select__select" style="width: 100%" data-select-placeholder="Брэнды"name="brands">
                             <option value="" selected="selected" disabled="disabled"></option>
                             <? foreach ($arResult['BRANDS_VALUES'] as $key=>$arItem): ?>
-                                <option value="<?=$arItem['ID'] ?>"><?=$arItem['NAME'] ?></option>
+                                <option value="<?=$arItem['ID'] ?>" <?if($_GET['brands'] == $arItem['ID']):?> selected="selected"<?endif;?>><?=$arItem['NAME'] ?></option>
                             <? endforeach; ?>
-                            <? else:?>
-                            <select class="select__select" style="width: 100%" data-select-placeholder="Брэнды" name="brands">
-                            <option value="" selected="selected" disabled="disabled"></option>
-                            <? foreach ($arResult['BRANDS_VALUES'] as $key=>$arItem): ?>
-                            <option value="<?=$arItem['ID']?>"><?=$arItem['NAME'] ?></option>
-                            <? endforeach; ?>
-                            <?php endif;?>
+
                         </select>
                     </div>
                 </div>
@@ -90,19 +73,12 @@ $this->setFrameMode(true);
             <div class="catalog-hero__select desktop">
                 <div class="select-wrapper">
                     <div class="select">
-                        <? if (isset($_GET["fat"])):?>
-                        <select class="select__select" style="width: 100%" data-select-placeholder="<?=$_GET['fat']?>" name="fat">
+
+						<select class="select__select" style="width: 100%" data-select-placeholder="Жирность" name="fat">
                             <option value="" selected="selected" disabled="disabled"></option>
                             <? foreach ($arResult['FAT_CONTENT'] as $arItem): ?>
-                                <option value="<?=$arItem['PROPERTY_FAT_CONTENT_VALUE'] ?>"><?=$arItem['PROPERTY_FAT_CONTENT_VALUE'] ?></option>
+                                <option value="<?=$arItem['PROPERTY_FAT_CONTENT_VALUE']?>" <?if($_GET['fat'] == $arItem['PROPERTY_FAT_CONTENT_VALUE']):?> selected="selected"<?endif;?>><?=$arItem['PROPERTY_FAT_CONTENT_VALUE']?></option>
                             <? endforeach; ?>
-                            <? else:?>
-                            <select class="select__select" style="width: 100%" data-select-placeholder="Жирность" name="fat">
-                                <option value="" selected="selected" disabled="disabled"></option>
-                                <? foreach ($arResult['FAT_CONTENT'] as $arItem): ?>
-                                    <option value="<?=$arItem['PROPERTY_FAT_CONTENT_VALUE'] ?>"><?=$arItem['PROPERTY_FAT_CONTENT_VALUE'] ?></option>
-                                <? endforeach; ?>
-                                <?endif;?>
                         </select>
                     </div>
                 </div>
@@ -122,19 +98,12 @@ $this->setFrameMode(true);
             <div class="catalog-hero__select">
                 <div class="select-wrapper">
                     <div class="select cstm-arrows">
-                        <? if (isset($_GET["Sort"])):?>
-                        <select class="select__select" style="width: 100%" data-select-placeholder="<?=$_GET['Sort']?>" name="Sort">
+
+						<select class="select__select" style="width: 100%" data-select-placeholder="Сортировка" name="Sort">
                             <option value="" selected="selected" disabled="disabled"></option>
-                            <option value="Сначала новинки">Сначала новинки</option>
-                            <option value="Сначала популярные">Сначала популярные</option>
+                            <option value="new" <?if($_GET['Sort'] == 'new'):?> selected="selected"<?endif;?>>Сначала новинки</option>
+                            <option value="popular" <?if($_GET['Sort'] == 'popular'):?> selected="selected"<?endif;?>>Сначала популярные</option>
                         </select>
-                        <? else:?>
-                            <select class="select__select" style="width: 100%" data-select-placeholder="Сортировка" name="Sort">
-                                <option value="" selected="selected" disabled="disabled"></option>
-                                <option value="Сначала новинки">Сначала новинки</option>
-                                <option value="Сначала популярные">Сначала популярные</option>
-                            </select>
-                        <? endif;?>
                     </div>
                 </div>
             </div>
@@ -150,8 +119,8 @@ $this->setFrameMode(true);
             <div class="catalog-hero__reset-text">Сбросить</div>
         </div>
         <input type="submit">
-    </div>
-</form>
+    </form>
+
 <section class="catalog-list container section-animation" data-aos="fade-up">
 
     <div class="catalog-list__inner">

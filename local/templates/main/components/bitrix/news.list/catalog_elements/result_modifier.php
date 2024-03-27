@@ -110,9 +110,9 @@ if($ar_fields12 = $db_brands1->GetNext()){
     $arResult['BRANDS_VALUES1'] = $ar_fields12["NAME"];
 
 }
-
-echo '<pre>';
-print_r($arResult['FAT_CONTENT']);
-echo '</pre>';
-
+//
+//echo '<pre>';
+//print_r($arResult['FAT_CONTENT']);
+//echo '</pre>';
+//
 
