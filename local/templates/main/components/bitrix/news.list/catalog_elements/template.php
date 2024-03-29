@@ -15,24 +15,22 @@ $this->setFrameMode(true);
 
 
 <div class="catalog-hero__thumbs">
-    <a class="catalog-hero__thumbs-item btn-hover_parent <? if (!$arResult['CURRENT_SECTION']): ?>active<? endif; ?>"
+    <a class="catalog-hero__thumbs-item btn-hover_parent <? if (!$arResult['ACTIVE_SECTION']): ?>active<? endif; ?>"
        href="/catalog/morozhenoe/">
         <div class="btn-hover_circle"></div>
         <span>Все</span>
     </a>
     <? foreach ($arResult['SECTIONS'] as $key => $item): ?>
-        <a class="catalog-hero__thumbs-item btn-hover_parent <? if ($arResult['CURRENT_SECTION'] == $item['CODE']) : ?> active<? endif; ?>"
+        <a class="catalog-hero__thumbs-item btn-hover_parent <? if ($arResult['ACTIVE_SECTION'] == $item['CODE']) : ?> active<? endif; ?>"
            href="<?= $item["SECTION_PAGE_URL"]; ?>">
             <div class="btn-hover_circle"></div>
-            <span>
-            <?= $item["NAME"]; ?>
-        </span>
+            <span><?= $item["NAME"];?></span>
         </a>
     <? endforeach; ?>
 </div>
 
-    <form class="catalog-hero__activity" data-aos="fade-up">
-        <label js_top_checklabel_desc class="catalog-hero__tops desktop" for="top">
+    <form class="catalog-hero__activity" data-aos="fade-up" id = "Form" >
+        <label data-top-checkbox class="catalog-hero__tops desktop" for="top">
             <input class="catalog-hero__tops-input catalog-check-desktop" type="checkbox" <? if (isset($_GET["top"])):?>checked<?endif;?> name="top" value="TOP">
             <div class="catalog-hero__tops-box">
                 <svg class="mark-svg" xmlns="http://www.w3.org/2000/svg" width="14" height="10" viewbox="0 0 14 10"
@@ -59,13 +57,11 @@ $this->setFrameMode(true);
             <div class="catalog-hero__select desktop">
                 <div class="select-wrapper">
                     <div class="select">
-
-						<select class="select__select" style="width: 100%" data-select-placeholder="Брэнды"name="brands">
-                            <option value="" selected="selected" disabled="disabled"></option>
-                            <? foreach ($arResult['BRANDS_VALUES'] as $key=>$arItem): ?>
-                                <option value="<?=$arItem['ID'] ?>" <?if($_GET['brands'] == $arItem['ID']):?> selected="selected"<?endif;?>><?=$arItem['NAME'] ?></option>
+						<select  class="select__select"  style="width: 100%" data-select-placeholder="Брэнды"name="brands" onchange="selectChange()">
+                            <option value="" selected="selected" disabled="disabled" ></option>
+                            <? foreach ($arResult['BRANDS'] as $key=>$arItem): ?>
+                                <option value="<?=$arItem['ID']?>" <?if($_GET['brands'] == $arItem['ID']):?> selected="selected"<?endif;?> ><?=$arItem['NAME'] ?></option>
                             <? endforeach; ?>
-
                         </select>
                     </div>
                 </div>
@@ -73,8 +69,7 @@ $this->setFrameMode(true);
             <div class="catalog-hero__select desktop">
                 <div class="select-wrapper">
                     <div class="select">
-
-						<select class="select__select" style="width: 100%" data-select-placeholder="Жирность" name="fat">
+						<select data-select-fat class="select__select" style="width: 100%" data-select-placeholder="Жирность" name="fat" onchange="selectChange()">
                             <option value="" selected="selected" disabled="disabled"></option>
                             <? foreach ($arResult['FAT_CONTENT'] as $arItem): ?>
                                 <option value="<?=$arItem['PROPERTY_FAT_CONTENT_VALUE']?>" <?if($_GET['fat'] == $arItem['PROPERTY_FAT_CONTENT_VALUE']):?> selected="selected"<?endif;?>><?=$arItem['PROPERTY_FAT_CONTENT_VALUE']?></option>
@@ -98,8 +93,7 @@ $this->setFrameMode(true);
             <div class="catalog-hero__select">
                 <div class="select-wrapper">
                     <div class="select cstm-arrows">
-
-						<select class="select__select" style="width: 100%" data-select-placeholder="Сортировка" name="Sort">
+                        <select data-select-sort class="select__select" style="width: 100%" data-select-placeholder="Сортировка" name="Sort" onchange="selectChange()">
                             <option value="" selected="selected" disabled="disabled"></option>
                             <option value="new" <?if($_GET['Sort'] == 'new'):?> selected="selected"<?endif;?>>Сначала новинки</option>
                             <option value="popular" <?if($_GET['Sort'] == 'popular'):?> selected="selected"<?endif;?>>Сначала популярные</option>
@@ -118,7 +112,7 @@ $this->setFrameMode(true);
             </div>
             <div class="catalog-hero__reset-text">Сбросить</div>
         </div>
-        <input type="submit">
+
     </form>
 
 <section class="catalog-list container section-animation" data-aos="fade-up">

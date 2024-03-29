@@ -1,73 +1,71 @@
 <?php
 
+// ресайз
 foreach ($arResult['ITEMS'] as $key => $arItem) {
-    $resize = CFile::ResizeImageGet($arItem['PREVIEW_PICTURE'], ["width" => 1200, "height" => 800],
+    $resize = CFile::ResizeImageGet(
+        $arItem['PREVIEW_PICTURE'],
+        ["width" => 1200, "height" => 800],
         BX_RESIZE_IMAGE_EXACT,
         true);
-
     $arResult['ITEMS'][$key]['PREVIEW_PICTURE']['SRC'] = $resize['src'];
 }
 
+// получение ID родительского раздела
 
 $arResult['MAIN_SECTION'] = $arResult['SECTION']['PATH'][0]['ID'];
-$arResult['ACTIVE_SECTION'] = end($arResult['SECTION']['PATH']);
 
-var_dump($arResult['SECTION']['PATH']);
-$arFilter = [
-    'IBLOCK_ID'=>$arParams['IBLOCK_ID'],
-    'GLOBAL_ACTIVE'=>'Y',
-    'SECTION_ID'=>$arResult['MAIN_SECTION'],
-    'DEPTH_LEVEL'=>2,
-];
+// получение ID текущего раздела
+
+$arPath = end($arResult['SECTION']['PATH']);
+$arResult['CURRENT_SECTION'][] = $arPath['ID'];
+
+// получение данных с подразделов родительского раздела
 
 $rsSections = CIBlockSection::GetList(
     ['SORT'=>'ASC'],
-    $arFilter,
+    [
+    'IBLOCK_ID'=>$arParams['IBLOCK_ID'],
+    'SECTION_ID'=>$arResult['MAIN_SECTION'],
+    'DEPTH_LEVEL'=>2
+    ],
     false,
     ['NAME', 'CODE', 'SECTION_PAGE_URL', 'ID']
 );
 
 while ($sectionList = $rsSections->GetNext()) {
-
     $arResult['SECTIONS'][] = $sectionList;
-
 }
 
+// получение символьного кода активного раздела
 
 if ($arResult['SECTION']['PATH'][1]){
-    $arResult['CURRENT_SECTION'] = $arResult['SECTION']['PATH'][1]['CODE'];
+    $arResult['ACTIVE_SECTION'] = $arResult['SECTION']['PATH'][1]['CODE'];
 }
 
-//echo '<pre>';
-//var_dump($arResult['SECTION']['PATH']);
-//echo '</pre>';
+// получение значений свойства FAT_CONTENT по разделам
 
 $dbListFat = CIBlockElement::GetList(
     false,
     [
         'IBLOCK_ID' => $arParams['IBLOCK_ID'],
         '!PROPERTY_FAT_CONTENT' => false,
-        'SUBSECTION' => 'Y',
-        'SECTION_ID'=>$arResult['ACTIVE_SECTION'],
-
+        "INCLUDE_SUBSECTIONS" => "Y",
+        'SECTION_ID' => $arResult['CURRENT_SECTION'],
     ],
     ['PROPERTY_FAT_CONTENT']
-
-
 );
 
 while($ar_fields = $dbListFat->Fetch()){
     $arResult['FAT_CONTENT'][] = $ar_fields;
 }
 
-
+// получение значений свойства TOP_NEW
 
 $dbListTop = CIBlockElement::GetList(
     ['SORT' => 'ASC'],
     [
         'IBLOCK_ID' => $arParams['IBLOCK_ID'],
         'PROPERTY_NEW_TOP_VALUE' => 'TOP'
-
     ],
     ['PROPERTY_NEW_TOP']
 );
@@ -76,48 +74,41 @@ while($ar_fields1 = $dbListTop->GetNext()){
     $arResult['NEW_TOP'] = $ar_fields1;
 }
 
+// получение ID свойства BRANDS по текущим разделам
 
-
+$brandsId = [];
 $db_brands = CIBlockElement::GetList(
     ["SORT"=>"ASC"],
     [
         'IBLOCK_ID' => $arParams['IBLOCK_ID'],
-        '!PROPERTY_FAT_CONTENT' => false,
-        'SUBSECTION' => 'Y',
-        'SECTION_ID'=>$arResult['ACTIVE_SECTION'],
+        '!PROPERTY_BRANDS' => false,
+        'INCLUDE_SUBSECTIONS' => 'Y',
+        'SECTION_ID' => $arResult['CURRENT_SECTION'],
 
     ],
-    ['PROPERTY_BRANDS'],
-    false
-
+    ['PROPERTY_BRANDS']
 );
 
 while($ar_fields1 = $db_brands->GetNext()){
-    $arResult['BRANDS_VALUES'][] = $ar_fields1;
+    $brandsId[] = $ar_fields1['PROPERTY_BRANDS_VALUE'];
+
 }
-//echo '<pre>';
-//print_r($arResult['BRANDS_VALUES']);
-//echo '</pre>';
-//
+
+// получение ID и имен свойства BRANDS
 
 $db_brands1 = CIBlockElement::GetList(
     false,
     [
         'IBLOCK_ID' => 4,
-        "ID" => $_GET["brands"]
-    ]
+        "ID" => $brandsId,
+    ],
+    ['ID', 'NAME']
     );
-if($ar_fields12 = $db_brands1->GetNext()){
-    $arResult['BRANDS_VALUES1'] = $ar_fields12["NAME"];
 
+if(!empty($brandsId)){
+while($ar_fields12 = $db_brands1->GetNext()) {
+    $arResult['BRANDS'][] = $ar_fields12;
 }
-
-echo '<pre>';
-print_r($arResult['BRANDS_VALUES']);
-echo '</pre>';
-
-echo '<pre>';
-print_r($arResult['BRANDS_VALUES1']);
-echo '</pre>';
+}
 
 

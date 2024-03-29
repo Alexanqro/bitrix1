@@ -91,3 +91,18 @@ echo '</pre>';
          false
      ); ?>
 </div>
+
+/**
+
+const label = document.querySelector('[data-top-checkbox]');
+
+label.addEventListener('click', (e) => {
+e.preventDefault()
+const input = label.querySelector('input');
+if (input.checked === true){
+console.log('checked');
+
+}
+})
+*/
+

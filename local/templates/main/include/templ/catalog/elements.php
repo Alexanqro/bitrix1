@@ -50,21 +50,14 @@ $arFilter = [
 
 $sortBy1 = 'ACTIVE_FROM';
 
-if (isset($_GET['Sort']) && $_GET['Sort'] == 'Сначала популярные'){
+if (isset($_GET['Sort']) && $_GET['Sort'] == 'popular'){
     $sortBy1 = 'SHOW_COUNTER';
-    $cookie = new Cookie($sortBy1, 48, false);
-    Application::getInstance()->getContext()->getResponse()->addCookie($cookie);
+//
 }
-if (isset($_GET['Sort']) && $_GET['Sort'] == 'Сначала новинки'){
+if (isset($_GET['Sort']) && $_GET['Sort'] == 'new'){
     $sortBy1 = 'CREATED';
-    $cookie = new Cookie($sortBy1, 44, false);
-    Application::getInstance()->getContext()->getResponse()->addCookie($cookie);
+
 }
-echo '<pre>';
-print_r($arFilter);
-echo '</pre>';
-
-
 
 ?>
 
@@ -123,7 +116,7 @@ echo '</pre>';
 			3 => "STORAGE_CONDITION",
 			4 => "PACKAGING",
 			5 => "FAT_CONTENT",
-            6 => ''
+            6 => 'BRANDS'
 		),
 		"SET_BROWSER_TITLE" => "Y",
 		"SET_LAST_MODIFIED" => "N",

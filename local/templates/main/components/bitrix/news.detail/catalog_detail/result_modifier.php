@@ -9,10 +9,7 @@ foreach ($arResult['PROPERTIES']['GALERY']['VALUE'] as $key => $arItem) {
         $arResult['PROPERTIES']['GALERY']['VALUE'][$key] = $resize;
     }
 }
-?>
 
-
-<?php
 $dbList = CIBlockElement::GetList(
     ["SORT"=>"ASC"],
     [
@@ -63,6 +60,3 @@ while($ar_fields = $dbList->GetNext()){
 }
 
 
-echo '<pre>';
-print_r($arResult['BRANDS']);
-echo '</pre>';
