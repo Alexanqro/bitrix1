@@ -33,8 +33,7 @@
 </section>
 
 <?
-use Bitrix\Main\Application;
-use Bitrix\Main\Web\Cookie;
+
 
 
 
@@ -52,7 +51,7 @@ $sortBy1 = 'ACTIVE_FROM';
 
 if (isset($_GET['Sort']) && $_GET['Sort'] == 'popular'){
     $sortBy1 = 'SHOW_COUNTER';
-//
+
 }
 if (isset($_GET['Sort']) && $_GET['Sort'] == 'new'){
     $sortBy1 = 'CREATED';

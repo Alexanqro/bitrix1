@@ -54,14 +54,3 @@ $this->setFrameMode(true);
     </div>
 </section>
 
-
-<?
-
-
-//echo '<pre>';
-//
-//print_r($arResult);
-//echo '</pre>';
-
-
-?>

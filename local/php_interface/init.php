@@ -1,13 +1,10 @@
 <?php
 
-
 use Bitrix\Main\Application;
 use Bitrix\Main\Web\Uri;
 use Bitrix\Main\Loader;
 
-if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
-    exit;
-}
+if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {exit;}
 
 Loader::includeModule("highloadblock");
 

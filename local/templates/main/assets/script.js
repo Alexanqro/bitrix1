@@ -1,3 +1,5 @@
+
+
 const check = document.querySelector('[data-top-checkbox]');
 const reset = document.querySelector('.catalog-hero__reset-text');
 
@@ -15,14 +17,39 @@ if (check !== null && reset !== null) {
     }
 }
 else {
-    document.querySelector('.partners-requisites__form').addEventListener('submit', function () {
-        let emailInput = document.getElementById('EmailID').value;
-        let emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-        let phoneRegex = /^\+\d{1,2} \(\d{3}\) \d{3}-\d{2}-\d{2}$/;
-        let phoneInput = document.getElementById('PhoneID').value;
-        let nameRegex = /^[А-Яа-яЁё\s]+$/;
-        let nameInput = document.getElementById('NameID').value;
+    // const form = document.querySelector('.partners-requisites__form');
+    //
+    // form.addEventListener('submit', function(event) {
+    //     event.preventDefault();
+    //
+    //     let formData = {
+    //         'Name': form.Name.value,
+    //         'Phone': form.Phone.value,
+    //         'Email': form.Email.value,
+    //         'Comments': form.Comments.value,
+    //         'URI': form.URI.value,
+    //         'NAME': form.NAME.value
+    //     };
+    //
+    //     BX.ajax({
+    //         method: 'POST',
+    //         url: '/local/templates/main/form_question.php',
+    //         data: formData,
+    //         processData: false,
+    //         contentType: true,
+    //         onsuccess: function(response) {
+    //             console.log('Форма отправлена успешно');
+    //             console.log(response);
+    //             console.log(formData)
+    //         },
+    //         onfailure: function(response) {
+    //             console.log('Ошибка отправки формы');
+    //             console.log(response);
+    //         }
+    //     });
+    // });
 
+    document.querySelector('.partners-requisites__form').addEventListener('submit', function () {
         let formData = new FormData(this);
         let convertedData = {};
         for (const [key, value] of formData.entries()) {
