@@ -5,24 +5,6 @@ $APPLICATION->SetTitle("Katalog");
 
 <?
 
-//echo '<pre>';
-//print_r($urlFilter);
-//
-//echo '</pre>';
-//
-
-//
-//$url = $APPLICATION->GetCurDir();
-//$urlExplode = explode('/', $url);
-//$urlFiltr = array_filter($urlExplode, function($elem) {
-//    return $elem != '';
-//});
-
-
-//echo '<pre>';
-//var_dump($getData);
-//echo '</pre>';
-
 $secCode = $urlArr[2];
 $elemCode = $urlArr[3];
 

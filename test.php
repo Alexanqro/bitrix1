@@ -3,35 +3,97 @@ include($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_before.
 $APPLICATION->SetTitle("TEST");
 $APPLICATION->ShowHead();
 ?>
-	 <?php $APPLICATION->ShowPanel();?>
+	 <?php $APPLICATION->ShowPanel(); ?>
 
-
-<form class="partners-requisites__form" method="post">
-    <input name="ytryty" value="fhdi">
-    <input type="submit">
-</form>
 <?php
-$jsonData = file_get_contents('php://input');
-var_dump($jsonData);
+
+echo '<pre>';
+var_dump("это гетДата ". $getData);
+echo '</pre>';
+
+echo '<pre>';
+var_dump('Это ури ' . $uri);
+echo '</pre>';
+
+echo '<pre>';
+var_dump('Это урл ар ' . $urlArr);
+echo '</pre>';
+
+
+
 ?>
 
-document.querySelector('.partners-requisites__form').addEventListener('submit', function () {
-let formData = new FormData(this);
-let convertedData = {};
-for (const [key, value] of formData.entries()) {
-convertedData[key] = value;
-}
-console.log(convertedData)
-let jsonData = JSON.stringify(convertedData);
-let xhr = new XMLHttpRequest();
-xhr.open('POST', '/local/templates/main/form_question.php', true);
-xhr.setRequestHeader('Content-Type', 'application/json; UTF-8');
-xhr.onload = function () {
-if (xhr.status === 200) {
-console.log(jsonData);
-} else {
-console.log('Произошла ошибка при отправке формы: ' + xhr.status);
-}
-};
-xhr.send(jsonData);
-});
+
+<? $APPLICATION->IncludeComponent(
+    "bitrix:news.list",
+    "",
+    array(
+        "ACTIVE_DATE_FORMAT" => "d.m.Y",
+        "ADD_SECTIONS_CHAIN" => "Y",
+        "AJAX_MODE" => "N",
+        "AJAX_OPTION_ADDITIONAL" => "",
+        "AJAX_OPTION_HISTORY" => "N",
+        "AJAX_OPTION_JUMP" => "N",
+        "AJAX_OPTION_STYLE" => "Y",
+        "CACHE_FILTER" => "N",
+        "CACHE_GROUPS" => "Y",
+        "CACHE_TIME" => "36000000",
+        "CACHE_TYPE" => "N",
+        "CHECK_DATES" => "Y",
+        "DETAIL_URL" => "",
+        "DISPLAY_BOTTOM_PAGER" => "Y",
+        "DISPLAY_DATE" => "Y",
+        "DISPLAY_NAME" => "Y",
+        "DISPLAY_PICTURE" => "Y",
+        "DISPLAY_PREVIEW_TEXT" => "Y",
+        "DISPLAY_TOP_PAGER" => "N",
+        "FIELD_CODE" => array(
+                "",
+            "PREVIEW_TEXT",
+            "PREVIEW_PICTURE",
+            "DETAIL_TEXT",
+            "DETAIL_PICTURE",
+            ""),
+        "FILTER_NAME" => "",
+        "HIDE_LINK_WHEN_NO_DETAIL" => "N",
+        "IBLOCK_ID" => "2",
+        "IBLOCK_TYPE" => "Slaider",
+        "INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
+        "INCLUDE_SUBSECTIONS" => "Y",
+        "MESSAGE_404" => "",
+        "NEWS_COUNT" => "20",
+        "PAGER_BASE_LINK_ENABLE" => "N",
+        "PAGER_DESC_NUMBERING" => "N",
+        "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+        "PAGER_SHOW_ALL" => "N",
+        "PAGER_SHOW_ALWAYS" => "N",
+        "PAGER_TEMPLATE" => ".default",
+        "PAGER_TITLE" => "Новости",
+        "PARENT_SECTION" => "",
+        "PARENT_SECTION_CODE" => $urlArr[2],
+        "PREVIEW_TRUNCATE_LEN" => "",
+        "PROPERTY_CODE" => array(
+                "FAT_CONTENT",
+            "NEW_TOP",
+            "NUTRITIONAL_VALUE",
+            "COMPAUND",
+            "STORAGE_CONDITION",
+            "PACKAGING",
+            ""),
+        "SET_BROWSER_TITLE" => "Y",
+        "SET_LAST_MODIFIED" => "N",
+        "SET_META_DESCRIPTION" => "Y",
+        "SET_META_KEYWORDS" => "Y",
+        "SET_STATUS_404" => "N",
+        "SET_TITLE" => "Y",
+        "SHOW_404" => "N",
+        "SORT_BY1" => "ACTIVE_FROM",
+        "SORT_BY2" => "SORT",
+        "SORT_ORDER1" => "DESC",
+        "SORT_ORDER2" => "ASC",
+        "STRICT_SECTION_CHECK" => "N"
+    )
+); ?>
+
+
+

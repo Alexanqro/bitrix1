@@ -15,13 +15,13 @@ $this->setFrameMode(true);
 
 
 <div class="catalog-hero__thumbs">
-    <a class="catalog-hero__thumbs-item btn-hover_parent <? if (!$arResult['ACTIVE_SECTION']): ?>active<? endif; ?>"
+    <a class="catalog-hero__thumbs-item btn-hover_parent <? if ($arResult['MAIN_SECTION']['CODE'] == $arResult['CURRENT_SECTION']['CODE']): ?>active<? endif; ?>"
        href="/catalog/morozhenoe/">
         <div class="btn-hover_circle"></div>
         <span>Все</span>
     </a>
     <? foreach ($arResult['SECTIONS'] as $key => $item): ?>
-        <a class="catalog-hero__thumbs-item btn-hover_parent <? if ($arResult['ACTIVE_SECTION'] == $item['CODE']) : ?> active<? endif; ?>"
+        <a class="catalog-hero__thumbs-item btn-hover_parent <? if ($arResult['CURRENT_SECTION']['CODE'] == $item['CODE']) : ?> active<? endif; ?>"
            href="<?= $item["SECTION_PAGE_URL"]; ?>">
             <div class="btn-hover_circle"></div>
             <span><?= $item["NAME"];?></span>
