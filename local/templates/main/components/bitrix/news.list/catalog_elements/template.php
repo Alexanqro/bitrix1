@@ -13,10 +13,27 @@
 $this->setFrameMode(true);
 ?>
 
+<div class="catalog-hero__top">
+    <h1 class="catalog-hero__title"><?= $arResult['CURRENT_SECTION']['NAME'];?></h1>
+    <div class="title-rombs">
+        <div class="title-rombs__item"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewbox="0 0 20 20" fill="none">
+                <path d="M0.676674 9.3773C3.7119 9.6279 10.0934 11.1315 10.6292 19.3385C10.6659 19.9153 9.97245 20.222 9.562 19.8116L0.192768 10.4445C-0.22201 10.0297 0.0955527 9.32977 0.676674 9.3773Z" fill="#F64653"></path>
+                <path d="M10.6226 0.673481C10.372 3.70871 8.86846 10.0902 0.661469 10.626C0.0846682 10.6627 -0.222082 9.96926 0.188375 9.5588L9.55544 0.189576C9.97022 -0.227362 10.6701 0.0923602 10.6226 0.673481Z" fill="#F64653"></path>
+                <path d="M19.3243 9.3773C16.289 9.6279 9.90752 11.1315 9.37176 19.3385C9.33504 19.9153 10.0285 20.222 10.4389 19.8116L19.8082 10.4445C20.2229 10.0297 19.9054 9.32977 19.3243 9.3773Z" fill="#F64653"></path>
+                <path d="M9.37828 0.673481C9.62671 3.70871 11.1325 10.0902 19.3395 10.626C19.9163 10.6627 20.223 9.96926 19.8125 9.5588L10.4455 0.189576C10.0307 -0.227362 9.33075 0.0923602 9.37828 0.673481Z" fill="#F64653"></path>
+            </svg></div>
+        <div class="title-rombs__item"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewbox="0 0 20 20" fill="none">
+                <path d="M0.676674 9.3773C3.7119 9.6279 10.0934 11.1315 10.6292 19.3385C10.6659 19.9153 9.97245 20.222 9.562 19.8116L0.192768 10.4445C-0.22201 10.0297 0.0955527 9.32977 0.676674 9.3773Z" fill="#F64653"></path>
+                <path d="M10.6226 0.673481C10.372 3.70871 8.86846 10.0902 0.661469 10.626C0.0846682 10.6627 -0.222082 9.96926 0.188375 9.5588L9.55544 0.189576C9.97022 -0.227362 10.6701 0.0923602 10.6226 0.673481Z" fill="#F64653"></path>
+                <path d="M19.3243 9.3773C16.289 9.6279 9.90752 11.1315 9.37176 19.3385C9.33504 19.9153 10.0285 20.222 10.4389 19.8116L19.8082 10.4445C20.2229 10.0297 19.9054 9.32977 19.3243 9.3773Z" fill="#F64653"></path>
+                <path d="M9.37828 0.673481C9.62671 3.70871 11.1325 10.0902 19.3395 10.626C19.9163 10.6627 20.223 9.96926 19.8125 9.5588L10.4455 0.189576C10.0307 -0.227362 9.33075 0.0923602 9.37828 0.673481Z" fill="#F64653"></path>
+            </svg></div>
+    </div>
+</div>
 
 <div class="catalog-hero__thumbs">
     <a class="catalog-hero__thumbs-item btn-hover_parent <? if ($arResult['MAIN_SECTION']['CODE'] == $arResult['CURRENT_SECTION']['CODE']): ?>active<? endif; ?>"
-       href="/catalog/morozhenoe/">
+       href="<?=$arResult['MAIN_SECTION']['SECTION_PAGE_URL']?>">
         <div class="btn-hover_circle"></div>
         <span>Все</span>
     </a>
@@ -30,6 +47,7 @@ $this->setFrameMode(true);
 </div>
 
     <form class="catalog-hero__activity" data-aos="fade-up" id = "Form" >
+        <?if ($arResult['TOP']) :?>
         <label data-top-checkbox class="catalog-hero__tops desktop" for="top">
             <input class="catalog-hero__tops-input catalog-check-desktop" type="checkbox" <? if (isset($_GET["top"])):?>checked<?endif;?> name="top" value="TOP">
             <div class="catalog-hero__tops-box">
@@ -53,9 +71,11 @@ $this->setFrameMode(true);
             </div>
             <div class="catalog-hero__tops-text">Топ продаж</div>
         </label>
+        <?endif;?>
         <div class="catalog-hero__selects">
             <div class="catalog-hero__select desktop">
                 <div class="select-wrapper">
+                    <?if ($arResult['BRANDS']['ID']) :?>
                     <div class="select">
 						<select  class="select__select"  style="width: 100%" data-select-placeholder="Брэнды"name="brands" onchange="selectChange()">
                             <option value="" selected="selected" disabled="disabled" ></option>
@@ -64,10 +84,12 @@ $this->setFrameMode(true);
                             <? endforeach; ?>
                         </select>
                     </div>
+                    <?endif;?>
                 </div>
             </div>
             <div class="catalog-hero__select desktop">
                 <div class="select-wrapper">
+                    <?if ($arResult['FAT_CONTENT'][0]) :?>
                     <div class="select">
 						<select data-select-fat class="select__select" style="width: 100%" data-select-placeholder="Жирность" name="fat" onchange="selectChange()">
                             <option value="" selected="selected" disabled="disabled"></option>
@@ -76,6 +98,7 @@ $this->setFrameMode(true);
                             <? endforeach; ?>
                         </select>
                     </div>
+                    <?endif;?>
                 </div>
             </div>
             <div class="catalog-hero__filters mobile" data-popup="catalog-filters">

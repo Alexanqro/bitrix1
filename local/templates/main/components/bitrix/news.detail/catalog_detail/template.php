@@ -11,10 +11,51 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
-//echo '<pre>';
-//var_dump($_SERVER);
-//echo '</pre>';
+
 ?>
+<?$this->SetViewTarget('form');?>
+
+<div class="catalog-detail__form" data-aos="fade-up">
+    <div class="catalog-detail__form-title">задать вопрос по продукту или&nbsp;оставить заявку на закупку</div>
+    <div class="catalog-detail__form-content">
+        <form class="partners-requisites__form" data-form="catalog-detail" method ="POST">
+            <?=bitrix_sessid_post()?>
+            <div class="partners-requisites__form-top">
+                <div class="input-wrapper" data-input-parent="">
+                    <div class="input-wrapper__placeholder">Имя</div>
+                    <input name = "Name" class="input" data-input="" required data-mask-text="" data-parsley-pattern="^[А-Яа-яЁёs]+$" placeholder="Имя" id ="NameID">
+                </div>
+                <div class="input-wrapper" data-input-parent="">
+                    <div class="input-wrapper__placeholder">Телефон</div>
+                    <input name = "Phone" class="input" data-input="" required type="tel" placeholder="Телефон" data-mask-phone="" id = "PhoneID">
+                </div>
+                <div class="input-wrapper" data-input-parent="">
+                    <div class="input-wrapper__placeholder">E-mail</div>
+                    <input name = "Email" class="input" data-input="" required type="email" placeholder="E-mail" id = "EmailID">
+                </div>
+            </div>
+            <div class="partners-requisites__form-area">
+                <div class="input-wrapper input-wrapper_textarea" data-input-parent="">
+                    <div class="input-wrapper__placeholder placeholder_background">Комментарий к заявке</div>
+                    <input name = "Comments" class="textarea" data-input="" type="text" placeholder="Комментраий к заявке" >
+                </div>
+            </div>
+            <div class="partners-requisites__form-bot">
+                <div class="partners-requisites__form-policy">Нажимая на кнопку «Отправить», вы даете согласие с
+                    <a class="partners-requisites__form-link" href="#"> политикой в отношении обработки персональных данных</a>
+                </div>
+                <button class="partners-requisites__form-btn btn-hover_parent" type="submit">
+                    <div class="btn-hover_circle"></div>
+                    <span>Отправить</span>
+                </button>
+                <input type="hidden"name="URI" value="<?=$_SERVER["REDIRECT_SCRIPT_URI"]?>"/>
+                <input type="hidden"name="NAME" value="<?=$arResult['PREVIEW_PICTURE']['TITLE']?>"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<?$this->EndViewTarget();?>
 
 <div class="catalog-detail__inner" xmlns="http://www.w3.org/1999/html">
     <div class="catalog-detail__col slider">
@@ -280,45 +321,8 @@ $this->setFrameMode(true);
                 </div>
             </div>
         </div>
-        <div class="catalog-detail__form" data-aos="fade-up">
-            <div class="catalog-detail__form-title">задать вопрос по продукту или&nbsp;оставить заявку на закупку</div>
-            <div class="catalog-detail__form-content">
-                <form class="partners-requisites__form" data-form="catalog-detail" method ="POST">
-                    <?=bitrix_sessid_post()?>
-                    <div class="partners-requisites__form-top">
-                        <div class="input-wrapper" data-input-parent="">
-                            <div class="input-wrapper__placeholder">Имя</div>
-                            <input name = "Name" class="input" data-input="" required data-mask-text="" data-parsley-pattern="^[А-Яа-яЁёs]+$" placeholder="Имя" id ="NameID">
-                        </div>
-                        <div class="input-wrapper" data-input-parent="">
-                            <div class="input-wrapper__placeholder">Телефон</div>
-                            <input name = "Phone" class="input" data-input="" required type="tel" placeholder="Телефон" data-mask-phone="" id = "PhoneID">
-                        </div>
-                        <div class="input-wrapper" data-input-parent="">
-                            <div class="input-wrapper__placeholder">E-mail</div>
-                            <input name = "Email" class="input" data-input="" required type="email" placeholder="E-mail" id = "EmailID">
-                        </div>
-                    </div>
-                    <div class="partners-requisites__form-area">
-                        <div class="input-wrapper input-wrapper_textarea" data-input-parent="">
-                            <div class="input-wrapper__placeholder placeholder_background">Комментарий к заявке</div>
-                            <input name = "Comments" class="textarea" data-input="" type="text" placeholder="Комментраий к заявке" >
-                        </div>
-                    </div>
-                    <div class="partners-requisites__form-bot">
-                        <div class="partners-requisites__form-policy">Нажимая на кнопку «Отправить», вы даете согласие с
-                            <a class="partners-requisites__form-link" href="#"> политикой в отношении обработки персональных данных</a>
-                        </div>
-                        <button class="partners-requisites__form-btn btn-hover_parent" type="submit">
-                            <div class="btn-hover_circle"></div>
-                            <span>Отправить</span>
-                        </button>
-                        <input type="hidden"name="URI" value="<?=$_SERVER["REDIRECT_SCRIPT_URI"]?>"/>
-                        <input type="hidden"name="NAME" value="<?=$arResult['PREVIEW_PICTURE']['TITLE']?>"/>
-                    </div>
-                </form>
-            </div>
-        </div>
+
+        <?$APPLICATION->ShowViewContent('form');?>
 
         <a class="catalog-detail__rect btn-hover_parent" href="<?=$arResult['PROPERTIES']['NEXT_PRODUCT']['DETAIL_PAGE_URL']?>">
             <div class="catalog-detail__rect-circle">

@@ -40,8 +40,6 @@ while ($ar_res = $res->GetNext()){
     $arResult['PROPERTIES']['BRANDS'] = $ar_res;
 }
 
-
-
 $dbList = CIBlockElement::GetList(
     ["SORT"=>"ASC"],
     [

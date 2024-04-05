@@ -1,9 +1,5 @@
 <?php
 
-use Bitrix\Main\Application;
-use Bitrix\Main\Context;
-use Bitrix\Main\Request;
-use Bitrix\Main\Server;
 use Bitrix\Main\Loader;
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/bitrix/modules/main/include/prolog_before.php';
@@ -12,10 +8,16 @@ header('Content-Type: application/json; charset=UTF-8');
 
 Loader::includeModule('iblock');
 
-
 $jsnData = file_get_contents('php://input');
-$jsnDataStr = htmlspecialchars($jsnData);
 $jsnDataAr = json_decode($jsnData, true);
+
+if ($_SERVER['HTTP_X_REQUESTED_WITH'] !== 'XMLHttpRequest' && $_SERVER['REQUEST_METHOD'] !== 'POST'){
+    exit;
+}
+
+if($jsnDataAr['sessid'] !== bitrix_sessid()){
+    exit;
+}
 
 $errors = [];
 
@@ -34,17 +36,50 @@ if (!empty($errors)) {
     exit;
 }
 
-    $newElement = new CIBlockElement;
+$jsnDataStr = '';
 
-    $arDataProduct = [
-        "IBLOCK_ID" => 5,
-        "NAME" => "Данные с формы",
-        "PREVIEW_TEXT" => $jsnDataStr,
-    ];
-    $newElement->Add($arDataProduct);
+foreach($jsnDataAr as $key => $value){
+    $jsnDataStr .= $key . ':' . $value . PHP_EOL;
+}
+
+$jsnDataStr = htmlspecialchars($jsnDataStr);
+
+$newElement = new CIBlockElement;
+
+$arDataProduct = [
+    "IBLOCK_ID" => 5,
+    "NAME" => "Данные с формы",
+    "PREVIEW_TEXT" => $jsnDataStr,
+];
+
+if (!$newElement->Add($arDataProduct)){
+    $errors[] = $newElement->LAST_ERROR;
+    echo json_encode(['errors' => $errors]);
+    exit();
+}
+
+echo json_encode('Element save');
+exit();
 
 
-    $message = "Форма успешно отправлена";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

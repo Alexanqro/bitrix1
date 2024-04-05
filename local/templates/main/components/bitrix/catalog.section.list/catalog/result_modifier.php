@@ -23,37 +23,4 @@ foreach ($arResult['SECTIONS'] as $key => $arItem){
 
 
 ?>
-<!--//$APPLICATION->restartBuffer();-->
-<!---->
-<!--//echo '<pre>';-->
-<!--////-->
-<!--//-->
-<!--//-->
-<!--//echo '</pre>';-->
-<!---->
-<!---->
 
-
-
-<!---->
-
-<?php
-//   echo '<pre>';
-//   var_dump($arResult);
-//   echo '</pre>';
-//
-//if (!function_exists('dd')) {
-//    function dd($var) {
-//        global $APPLICATION;
-//
-//        $APPLICATION->RestartBuffer();
-//        echo '<pre>';
-//        var_dump($var);
-//        echo '</pre>';
-//        die();
-//    }
-//}
-//
-//dd($arResult['SECTIONS']);
-
-//?>

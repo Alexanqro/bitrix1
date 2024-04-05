@@ -21,3 +21,19 @@ $isAjax = $request->isAjaxRequest();
 $uri = new Uri($request->getRequestUri());
 
 $urlArr = array_diff(explode('/', $uri->getPath()), ['']);
+
+function dd($ar){
+    echo '<pre>';
+    var_dump($ar);
+    echo '</pre>';
+}
+
+//function dd($var) {
+//    global $APPLICATION;
+//
+//    $APPLICATION->RestartBuffer();
+//    echo '<pre>';
+//    var_dump($var);
+//    echo '</pre>';
+//    die();
+//}

@@ -42,7 +42,6 @@ $dbListFat = CIBlockElement::GetList(
     false,
     [
         'IBLOCK_ID' => $arParams['IBLOCK_ID'],
-        '!PROPERTY_FAT_CONTENT' => false,
         "INCLUDE_SUBSECTIONS" => "Y",
         'SECTION_ID' => $arResult['CURRENT_SECTION']['ID'],
     ],
@@ -63,7 +62,6 @@ $db_brands = CIBlockElement::GetList(
     ["SORT"=>"ASC"],
     [
         'IBLOCK_ID' => $arParams['IBLOCK_ID'],
-        '!PROPERTY_BRANDS' => false,
         'INCLUDE_SUBSECTIONS' => 'Y',
         'SECTION_ID' => $arResult['CURRENT_SECTION']['ID'],
     ],
@@ -78,6 +76,7 @@ while($ar_fields1 = $db_brands->GetNext()){
 
 // получение ID и имен свойства BRANDS
 
+if(!empty($brandsId)){
 $db_brands1 = CIBlockElement::GetList(
     false,
     [
@@ -90,9 +89,28 @@ $db_brands1 = CIBlockElement::GetList(
     ]
     );
 
-if(!empty($brandsId)){
-while($ar_fields12 = $db_brands1->GetNext()) {
-    $arResult['BRANDS'][] = $ar_fields12;
+
+    while($ar_fields12 = $db_brands1->GetNext()) {
+        $arResult['BRANDS'][] = $ar_fields12;
     }
 }
 
+
+$db_top = CIBlockElement::GetList(
+    false,
+    [
+        'IBLOCK_ID' => $arParams['IBLOCK_ID'],
+        "INCLUDE_SUBSECTIONS" => "Y",
+        'SECTION_ID' => $arResult['CURRENT_SECTION']['ID'],
+        'PROPERTY_NEW_TOP_VALUE' => "TOP"
+    ],
+    ['PROPERTY_NEW_TOP']
+);
+
+while($ar_fieldss = $db_top->GetNext()){
+    $arResult['TOP'][] = $ar_fieldss;
+}
+
+
+//dd($arResult['TOP']);
+//dd($arResult['FAT_CONTENT']);
